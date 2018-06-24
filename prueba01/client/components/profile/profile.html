@@ -1,0 +1,30 @@
+<template name="profile">
+  <div class="row">
+    <div class="col s12">
+      <h2>Perfil</h2>
+
+
+      <div class="card blue-grey darken-3">
+        <div class="card-content white-text">
+          <span class="card-title">Id: {{user.id}}</span>
+          <hr />
+
+          <span class="card-title">Email: {{user.email}}</span>
+          <hr />
+          <span class="card-title">Nombre: {{user.profile.name}}</span>
+          <hr />
+          <span class="card-title">Apellido: {{user.profile.surname}}</span>
+          <hr />
+          <span class="card-title">Dirección: {{user.profile.address}}</span>
+        </div>
+      </div>
+
+          <a class="btn" href="{{pathFor 'profileEdit'}}">
+      			Actualizar mi Perfil
+      		</a>
+
+
+
+    </div>
+  </div>
+</template>

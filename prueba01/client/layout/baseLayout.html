@@ -1,0 +1,27 @@
+
+<template name="baseLayout">
+
+<nav>
+	<div class="nav-wrapper">
+
+    <a ref="#" class="brand-logo right">Projects Manager App</a>
+
+    <ul id="nav-mobile" class="left">
+
+    	{{> loginButtons}}
+    	{{#if currentUser}}
+    	    <li> <a href="{{ pathFor 'profile'}}">Mi Perfil</a></li>
+					<!--<li> <a href="{{pathFor 'act_profile'}}">Actualizar Perfil</a></li>-->
+   		    <li> <a href="{{ pathFor 'projects'}}">Proyectos</a></li>
+        {{/if}}
+    </ul>
+</div>
+</nav>
+
+{{#momentum plugin="growl"}}
+{{#if Template.subscriptionsReady}}
+  {{>yield}}
+{{/if}}
+{{/momentum}}
+
+</template>

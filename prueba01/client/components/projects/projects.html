@@ -1,0 +1,36 @@
+<!--Este archivo sera la template de projects-->
+<template name="projects">
+
+<div class="row">
+
+	<div class="col s12">
+		<h2>Mis Proyectos</h2>
+		<a class="btn" href="{{pathFor 'projects_form'}}">
+			Añadir nuevo proyecto
+		</a>
+
+		{{>EasySearch.Input index=projects}}
+		<ul class="collection with-header">	<!--crea una lista desordenada-->
+			{{#EasySearch.Each index=projects}}
+			<!--{{#if projects.count}}		 cuenta todos los proyectos del usuario
+				{{#each projects}}-->
+
+
+
+				<li class="collection-item">
+				<div>
+				{{name}}				<!--escribe el atributo nombre de los proyectos del usuario-->
+				{{>project_links}}		<!--Llama a las funciones que defini antes, los botones borrar y detalles-->
+
+
+				</div>
+				</li>
+			<!--	{{/each}}
+				{{else}}
+				<li>No tienes ningún proyecto </li>
+			{{/if}}-->
+			{{/EasySearch.Each}}
+		</ul>
+	</div>
+</div>
+</template>
