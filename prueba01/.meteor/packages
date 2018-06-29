@@ -31,5 +31,5 @@ accounts-password
 #tsega:bootstrap3-datetimepicker
 alexwine:bootstrap-4
 stylus@=2.513.14
-#twbs:bootstrap
+twbs:bootstrap
 chuikoff:accounts-ui-bootstrap-4
