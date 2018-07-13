@@ -9,14 +9,11 @@ Template.profileEdit.events({
      var ingresoNombre=target.name.value;     //se alamcena el contenido del input en una variable
      var ingresoApellido=target.surname.value;
      var ingresoDireccion=target.address.value;
-console.log("entro a la funcion");
+     console.log("entro a la funcion");
      //var nombre = "hola";
 
-//Router.go('profile');                                   // le digo que una vez termine vuelva al profile
-  },
-});
-
-Accounts.createUser({
+     //Router.go('profile');                                   // le digo que una vez termine vuelva al profile
+    Accounts.createUser({
 			email: ingresoNombre,
 			password: ingresoApellido,
 			profile: {
@@ -25,4 +22,8 @@ Accounts.createUser({
 
 			},
 
-		})
+    });
+
+
+  },
+});
