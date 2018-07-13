@@ -1,4 +1,4 @@
-import {mongo} from 'meteor/mongo';
+/*import {mongo} from 'meteor/mongo';
 import  {Meteor} from 'meteor/meteor'
 
 Template.profileEdit.events({
@@ -20,3 +20,4 @@ console.log("entro a la funcion");
 Router.go('profile');                                   // le digo que una vez termine vuelva al profile
   },
 });
+*/

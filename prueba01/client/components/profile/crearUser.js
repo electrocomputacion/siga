@@ -15,13 +15,13 @@ Template.crearUser.events({
      console.log("entro a la funcion");
      //var nombre = "hola";
 
-     //Router.go('profile');                                   // le digo que una vez termine vuelva al profile
+                                        // le digo que una vez termine vuelva al profile
     Accounts.createUser({
 			email: ingresoEmail,
 			password: ingresoDni,
 			profile: {
-				name_first:  ingresoNombre,
-				name_last: ingresoApellido,
+				name:  ingresoNombre,
+				surname: ingresoApellido,
         address: ingresoDireccion,
         phone: ingresoPhone,
         dni: ingresoDni,
@@ -30,6 +30,6 @@ Template.crearUser.events({
 
     });
 
-
+Router.go('profile');
   },
 });
