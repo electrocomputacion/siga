@@ -74,7 +74,7 @@ Router.route('/profile',{												//esto define la ruta al profile del usuari
 		}
 	}
 })
-Router.route('/profileEdit',{
-	name: 'profileEdit',
+Router.route('/crearUser',{
+	name: 'crearUser',
 
 })
