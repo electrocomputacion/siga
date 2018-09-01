@@ -78,7 +78,7 @@ Router.route('/crearUser',{
 	name: 'crearUser',
 
 })
-Router.route('/crearAlumno',{
-	name: 'crearAlumno',
+Router.route('/alumnoForm',{
+	name: 'alumnoForm',
 
 })

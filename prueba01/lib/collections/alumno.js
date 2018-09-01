@@ -8,6 +8,7 @@ SimpleSchema.extendOptions(['autoform']);
 
 export const Alumno = new Mongo.Collection('alumno');
 
+
 Alumno.attachSchema(new SimpleSchema({
  name: {
   type: String,
@@ -48,6 +49,16 @@ Alumno.attachSchema(new SimpleSchema({
   type: String,
   label: 'Escuela Primaria',
   max: 200
+ },
+ owner:{
+  type: String,
+  label: "Propietario",
+  autoValue() {
+   return this.userId
+  },
+  autoform: {
+   type: "hidden"
+  }
  },
  created: {
   type: Date,

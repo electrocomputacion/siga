@@ -1,7 +1,7 @@
-import {mongo} from 'meteor/mongo';
+/*import {mongo} from 'meteor/mongo';
 import  {Meteor} from 'meteor/meteor'
 
-Template.crearUser.events({
+Template.1crearUser.events({
 
   "submit #crearAlumno": function(event, template){   //captura el evento submit del formulario
      event.preventDefault();
@@ -22,4 +22,4 @@ Template.crearUser.events({
 
 Router.go('crearAlumno');
   },
-});
+});*/
