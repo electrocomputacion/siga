@@ -59,3 +59,19 @@ Alumno.attachSchema(new SimpleSchema({
   }
  }
 }));
+
+Alumno.allow({
+
+  insert: function(userId, doc){
+
+    return doc.owner===userId;
+
+  }
+})
+
+Meteor.methods({
+  'alumno.remove'(alumnoId){
+    check(alumnoId, String );
+    Alumno.remove(alumnoId);
+  }
+})

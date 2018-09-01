@@ -1,7 +1,0 @@
-prueba de push
-lo hago desde la web y no hay problemas
-pero no desde atom
-esta linea la modifico Harry
-la modifico ahora martes
-leo ubuntu 16.04 me funciona bien el atom y el github
-hoy dia 5 de julio modifique este archivo con el atom

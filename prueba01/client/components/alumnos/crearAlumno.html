@@ -2,62 +2,19 @@
 
 <div class="row">
 	<div class="col s12">
-<!--<h2>Cargar Nuevo Alumno</h2>-->
-	<!--//////////////////////////////////////////////////////-->
+	<h2>Cargar Nuevo Alumno</h2>
 
-	        <form class="form" id="cargar_alumno">
-	        <div class="modal-body">
-				<div class="panel panel-warning">
-				  	<div class="panel-heading">
-				  		<button type="button" class="close" data-dismiss="modal">&times;</button>
-				  		<h3>Cargar Nuevo Alumno</h3>
-				  	</div>
-				  	<div class="panel-body">
-					  	<div class="form-group">
-						  <label for="usr">Nombre</label>
-						  <input type="text" class="form-control" id="name" >
-						</div>
-						<div class="form-group">
-						<label for="usr">Apellido</label>
-						<input type="text" class="form-control" id="surname" >
-					</div>
-				<div class="form-group">
-						<label for="usr">D.N.I.</label>
-						<input type="text" class="form-control" id="dni" >
-					</div>
-						<div class="form-group">
-						  <label for="usr">Dirección</label>
-						  <input type="text" class="form-control" id="address" >
-						</div>
-						<div class="form-group">
-						  <label for="usr">Fecha Nacimiento</label>
-						  <input type="date" class="form-control" id="fech_nac" >
-						</div>
-						<div class="form-group">
-						  <label for="usr">Legajo</label>
-						  <input type="text" class="form-control" id="legajo" >
-						</div>
-            <div class="form-group">
-              <label for="usr">Grupo Sanguineo</label>
-              <input type="text" class="form-control" id="grupo_sang" >
-            </div>
-            <div class="form-group">
-              <label for="usr">Legajo</label>
-              <input type="text" class="form-control" id="legajo" >
-            </div>
-            <div class="form-group">
-              <label for="usr">Escuela Primaria</label>
-              <input type="text" class="form-control" id="esc_origen" >
-            </div>
-				  	</div>
-				</div>
-	        </div>
+	</div>
 
-	        <div class="modal-footer">
-				<button type="submit" id="submit" class="btn btn-success">Guardar</button>
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-			</div>
-			</form>
-    </div>
-  </div>
+	<div class="divider"></div>
+	<div class="col-12">
+
+		{{> quickForm collection=formCollection id="alumnoForm" type="insert"}}
+
+	</div>
+
+
+
+</div>
+
 </template>
