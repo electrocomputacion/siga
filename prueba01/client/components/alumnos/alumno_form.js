@@ -1,4 +1,4 @@
-import {Projects} from '../../../lib/collections/alumno';
+import {Alumno} from '../../../lib/collections/alumno';
 import {Router} from 'meteor/iron:router';
 import {AutoForm}	from 'meteor/aldeed:autoform';
 
