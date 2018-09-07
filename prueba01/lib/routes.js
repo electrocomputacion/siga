@@ -83,3 +83,7 @@ Router.route('/alumno_form',{
 	name: 'alumno_form',
 
 })
+Router.route('/tutor_form',{
+	name: 'tutor_form',
+
+})

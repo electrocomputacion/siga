@@ -6,10 +6,10 @@ import{ Meteor } from 'meteor/meteor';
 // Required AutoForm setup
 SimpleSchema.extendOptions(['autoform']);
 
-export const Alumno = new Mongo.Collection('alumno');
+export const Tutor = new Mongo.Collection('tutor');
 
 
-Alumno.attachSchema(new SimpleSchema({
+Tutor.attachSchema(new SimpleSchema({
  name: {
   type: String,
   label: 'Nombre',
@@ -39,31 +39,16 @@ Alumno.attachSchema(new SimpleSchema({
   label: 'Fecha Nacimiento',
   max: 200
  },
- legajo: {
+num_cel: {
   type: Number,
-  label: 'Legajo',
-  optional: true,
-
+  label: 'Teléfono',
  },
- grupo_sang: {
-  type: String,
-  label: 'Grupo Sanguineo',
-  optional: true,
-  max: 10
- },
- esc_origen: {
-  type: String,
-  label: 'Escuela Primaria',
-  max: 200
- },
-
  owner:{
   type: String,
   label: "Propietario",
   autoValue() {
    return this.userId
   },
-
   autoform: {
    type: "hidden"
   }
@@ -79,18 +64,11 @@ Alumno.attachSchema(new SimpleSchema({
  }
 }));
 
-Alumno.allow({
+Tutor.allow({
 
   insert: function(userId, doc){
 
     return doc.owner===userId;
 
-  }
-})
-
-Meteor.methods({
-  'alumno.remove'(alumnoId){
-    check(alumnoId, String );
-    Alumno.remove(alumnoId);
   }
 })
