@@ -1,7 +1,7 @@
 Meteor.methods({
-  'new_user':function(usuario){
+  'new_user':function(usuario){ //meteodo que crea el usuario con los datos del formulario
 
-  id = Accounts.createUser({
+  id = Accounts.createUser({      //guardo en id el "id" del usuario que se crea
       email: usuario.email,
       password: usuario.dni,
       profile: {
@@ -17,7 +17,7 @@ Meteor.methods({
 //////////////////////////////////////
   // Need _id of existing user record so this call must come
   // after `Accounts.createUser` or `Accounts.onCreate`
-  Roles.addUsersToRoles(id, usuario.cargo_roles, 'default-group');
+  Roles.addUsersToRoles(id, usuario.cargo_roles, 'default-group');    //asigno el rol al usuario creado con el id asignado
 //////////////////////////////////////
      //return usuario.email;
      return usuario.dni;
