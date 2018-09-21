@@ -1,7 +1,7 @@
 Meteor.methods({
   'new_user':function(usuario){
 
-    Accounts.createUser({
+  id = Accounts.createUser({
       email: usuario.email,
       password: usuario.dni,
       profile: {
@@ -11,10 +11,16 @@ Meteor.methods({
         phone: usuario.phone,
         dni: usuario.dni,
       }
-
-
     });//fin de la Account
+//////////////////////////////////////
+//tengo que ver como recupertar el id del usuario creado x nombre o x dni o x correo
+//////////////////////////////////////
+  // Need _id of existing user record so this call must come
+  // after `Accounts.createUser` or `Accounts.onCreate`
+  Roles.addUsersToRoles(id, usuario.cargo_roles, 'default-group');
+//////////////////////////////////////
      //return usuario.email;
-     return "#";
+     return usuario.dni;
+     console.log(id);
   } //sin de la funcion
 }); //fin del metodo

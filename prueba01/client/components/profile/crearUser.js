@@ -14,6 +14,7 @@ var usuario= new Object();
       usuario.dni=target.dni.value;
       usuario.phone=target.phone.value;
       usuario.email=target.email.value;
+      usuario.cargo_roles=target.cargo_roles.value;
 ////////////////////////////////
      Meteor.call("new_user", usuario, function(error, result){
        if(error){
