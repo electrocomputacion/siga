@@ -28,9 +28,10 @@ aldeed:collection2-core@2.0.0
 easy:search
 #ian:accounts-ui-bootstrap-3
 accounts-password
+accounts-ui
 #tsega:bootstrap3-datetimepicker
 alexwine:bootstrap-4
 #stylus@=2.513.14
 twbs:bootstrap
-chuikoff:accounts-ui-bootstrap-4
+#chuikoff:accounts-ui-bootstrap-4
 alanning:roles

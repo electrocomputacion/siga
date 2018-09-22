@@ -26,7 +26,7 @@ Meteor.startup(() => {
 
 })*/
 /////////////////////
-accountsUIBootstrap3.setLanguage('es');
+/*accountsUIBootstrap3.setLanguage('es');
 Accounts.ui.config({
     requestPermissions: {},
     extraSignupFields: [{
