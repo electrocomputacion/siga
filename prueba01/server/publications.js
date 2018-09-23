@@ -6,8 +6,8 @@ Meteor.publish('projects', function projectsPublication()
 	// userId nos la da account ui
 	return Projects.find({owner: this.userId});		//publicacion en el servidor
 });
-Meteor.publish('alumno', function alumnoPublication()
+Meteor.publish('users', function alumnoPublication()
 {
 	// userId nos la da account ui
-	return Alumno.find({owner: this.userId});		//publicacion en el servidor
+	return Meteor.users.find();		//publicacion en el servidor
 });
