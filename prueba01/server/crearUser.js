@@ -15,7 +15,7 @@ if (Roles.userIsInRole(loggedInUser, ['admin'])) {
       }
     });//fin de la Account
   Roles.addUsersToRoles(id, usuario.cargo_roles);    //asigno el rol al usuario creado con el id asignado
-  console.log(id);
+  //console.log(id);
      return id;
   } //sin de la funcion
 

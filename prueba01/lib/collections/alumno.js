@@ -1,6 +1,6 @@
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
-import { Notes } from './notes';
+import { Tutor } from './tutor';
 import{ check } from 'meteor/check';
 import{ Meteor } from 'meteor/meteor';
 // Required AutoForm setup
@@ -14,30 +14,35 @@ Alumno.attachSchema(new SimpleSchema({
   type: String,
   label: 'Nombre',
   min:2,
-  max: 200
+  max: 200,
+  optional: true,
  },
  surname: {
   type: String,
   label: 'Apellido',
   min:2,
-  max: 200
+  max: 200,
+  optional: true,
  },
  dni: {           //restringir dni con mascara obligatorio desde el formulario
   type: Number,
   label: 'DNI',
   min: 1000000,
-  max: 99999999
+  max: 99999999,
+  optional: true,
  },
  address: {
   type: String,
   label: 'Dirección',
   min:4,
-  max: 200
+  max: 200,
+  optional: true,
  },
  fech_nac: {
   type: Date,
   label: 'Fecha Nacimiento',
-  max: 200
+  max: 200,
+  optional: true,
  },
  legajo: {
   type: Number,
@@ -54,7 +59,8 @@ Alumno.attachSchema(new SimpleSchema({
  esc_origen: {
   type: String,
   label: 'Escuela Primaria',
-  max: 200
+  max: 200,
+  optional: true,
  },
 
  owner:{
@@ -76,7 +82,12 @@ Alumno.attachSchema(new SimpleSchema({
   autoform: {
    type: "hidden"
   }
- }
+},
+tutores: {
+   type: Array,
+   optional: true,
+  },
+  'tutor.$': Tutor
 }));
 
 Alumno.allow({

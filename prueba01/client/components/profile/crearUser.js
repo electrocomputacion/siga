@@ -23,10 +23,17 @@ var usuario= new Object();          //usuario es un objeto q contendra toda la i
          console.log("result",result); //en caso de error tengo que definir una funcion
        }
        if(result){
-        Router.go('profile', {id:studentId}); //al crear el usuario devuelvo el perfil creado
+         console.log("result",result);
+
+        Router.go('profile'); //al crear el usuario devuelvo el perfil creado
        }
      });
 
 
   },
 });
+Template.crearUser.onRendered(function(){
+  //$("#dni").inputmask("99999999");
+  $("#dni").inputmask("9999999[9]"); //mask with dynamic syntax
+
+})

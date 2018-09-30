@@ -2,6 +2,8 @@ import { Router } from 'meteor/iron:router';
 import { Meteor } from 'meteor/meteor';
 import { Projects, ProjectsIndex } from '../lib/collections/projects';
 import { Alumno } from '../lib/collections/alumno';
+import { Tutor, TutorIndex } from '../lib/collections/tutor';
+
 
 Router.onBeforeAction(function(){		//Controla que no se pueda ingresar si no se esta logeado
 
@@ -26,6 +28,7 @@ Router.configure({
 
 		return Meteor.subscribe('projects'); //con esto vamos a tener disponibles los proyectos publicados en 'publications' en el cliente
 		return Meteor.subscribe('alumno');
+		return Meteor.subscribe('tutor');
 	}
 })
 
@@ -81,9 +84,17 @@ Router.route('/crearUser',{
 })
 Router.route('/alumno_form',{
 	name: 'alumno_form',
+	data: {		//data es un objeto que contendra los datos que queremos obtener de proyectos en el template
+		tutor(){
+			//return Projects.find() //solo devolvera los proyectos del usuario logeado (control echo en publications)
+				return TutorIndex;
+		}
+	}
 
 })
 Router.route('/tutor_form',{
 	name: 'tutor_form',
+
+
 
 })
