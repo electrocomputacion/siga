@@ -29,8 +29,7 @@ Template.alumnoForm.events({
      var ingresoEsc=target.esc_origen.value;
      console.log("entro a la funcion");
      //var nombre = "hola";
-
-                                        // le digo que una vez termine vuelva al profile
+                                    // le digo que una vez termine vuelva al profile
 
 Alumno.insert({
   name:ingresoNombre,

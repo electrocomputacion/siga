@@ -8,7 +8,7 @@ Meteor.publish('projects', function projectsPublication()
 });
 Meteor.publish('tutor', function tutorPublication(){
 
-	return Tutor.find();
+	return Tutor.find({owner: this.userId});
 
 });
 /*Meteor.publish('users', function alumnoPublication()

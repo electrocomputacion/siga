@@ -48,11 +48,16 @@
             <div class="form-group">
 							<label for="usr">Tutor</label>
 							{{>EasySearch.Input index=tutor attributes=inputAttributes}}
+							{{#EasySearch.IfNoResults index=tutor}}
+  								<div>No results found!</div>
+								{{/EasySearch.IfNoResults}}
 							<ul class="collection with-header">	<!--crea una lista desordenada-->
 								{{#EasySearch.Each index=tutor}}
+								<li class="collection-item">
 								<div>
-									{{dni}}
+								{{name}}				<!--escribe el atributo nombre de los proyectos del usuario-->
 								</div>
+								</li>
 								{{/EasySearch.Each}}
 							</ul>
 				  	</div>
