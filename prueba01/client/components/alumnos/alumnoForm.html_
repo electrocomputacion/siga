@@ -1,0 +1,42 @@
+<template name="alumnoForm">
+
+<div class="row">
+	<div class="col s12">
+	<h2>Cargar Nuevo Alumno</h2>
+
+	</div>
+
+	<div class="divider"></div>
+	<div class="col-12">
+
+		<!--{{> quickForm collection=formCollection id="alumnoForm" type="insert"}}-->
+    {{>EasySearch.Input index=tutor}}
+		<ul class="collection with-header">	<!--crea una lista desordenada-->
+			{{#EasySearch.Each index=turo}}
+			<!--{{#if projects.count}}		 cuenta todos los proyectos del usuario
+				{{#each projects}}-->
+
+
+
+				<li class="collection-item">
+				<div>
+				{{name}}				<!--escribe el atributo nombre de los proyectos del usuario-->
+				{{>project_links}}		<!--Llama a las funciones que defini antes, los botones borrar y detalles-->
+
+
+				</div>
+				</li>
+			<!--	{{/each}}
+				{{else}}
+				<li>No tienes ningún proyecto </li>
+			{{/if}}-->
+			{{/EasySearch.Each}}
+		</ul>
+
+	</div>
+
+
+
+</div>
+
+</template>

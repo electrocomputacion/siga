@@ -7,13 +7,13 @@ Template.alumnoForm.helpers({       //helper que le asigna los atributos al inpu
     return {
       class:'form-control',
       placeholder: 'Ingrese el DNI del Tutor',
-      type: 'number',
+      type: 'String',
       id:'dni_tutor',
     }
   },
 })
 //////////////////////////////////////////////////
-
+//console.log(tutor.name);
 Template.alumnoForm.events({
 
   "submit #crearAlumno": function(event, template){   //captura el evento submit del formulario

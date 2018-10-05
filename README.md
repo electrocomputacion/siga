@@ -1,2 +1,2 @@
 # siga
-sistema integrado de gestion de alumnos
+sistema integrado de gestión de alumnos

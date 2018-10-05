@@ -1,6 +1,5 @@
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
-import { Notes } from './notes';
 import{ check } from 'meteor/check';
 import{ Meteor } from 'meteor/meteor';
 
@@ -12,7 +11,7 @@ export const Tutor = new Mongo.Collection('tutor');
 
 export const TutorIndex = new EasySearch.Index({
   collection: Tutor,
-  fields: ['dni'],
+  fields: ['dni','name'],
   engine: new EasySearch.Minimongo(),
   defaultSearchOptions:{limit: 4}
 })
@@ -31,10 +30,9 @@ Tutor.attachSchema(new SimpleSchema({
   max: 200
  },
  dni: {           //restringir dni con mascara obligatorio desde el formulario
-  type: Number,
+  type: String,
   label: 'DNI',
-  min: 1000000,
-  max: 99999999
+    max: 200
  },
  address: {
   type: String,
