@@ -42,6 +42,7 @@ Router.route('/projects',{
 	data: {		//data es un objeto que contendra los datos que queremos obtener de proyectos en el template
 		projects(){
 			//return Projects.find() //solo devolvera los proyectos del usuario logeado (control echo en publications)
+				console.log(ProjectsIndex);
 				return ProjectsIndex;
 		}
 	}
@@ -82,11 +83,12 @@ Router.route('/crearUser',{
 	name: 'crearUser',
 
 })
-Router.route('/alumno_form',{
-	name: 'alumno_form',
+Router.route('/alumnoForm',{
+	name: 'alumnoForm',
 	data: {		//data es un objeto que contendra los datos que queremos obtener de proyectos en el template
 		tutor(){
 			//return Projects.find() //solo devolvera los proyectos del usuario logeado (control echo en publications)
+				console.log(TutorIndex);
 				return TutorIndex;
 		}
 	}
@@ -94,7 +96,4 @@ Router.route('/alumno_form',{
 })
 Router.route('/tutor_form',{
 	name: 'tutor_form',
-
-
-
 })
