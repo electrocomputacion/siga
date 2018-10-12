@@ -2,25 +2,19 @@ import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 import{ check } from 'meteor/check';
 import{ Meteor } from 'meteor/meteor';
-
 // Required AutoForm setup
 SimpleSchema.extendOptions(['autoform']);
 import{ EasySearch } from 'meteor/easy:search';
-//import { Index, MinimongoEngine } from 'meteor/easy:search';
 
 export const Tutor = new Mongo.Collection('tutor');
 
-/*const TutorIndex = new Index({
-  collection: Tutor,
-  fields: ['dni','name'],
-  engine: new MinimongoEngine()
-})*/
-
 export const TutorIndex = new EasySearch.Index({
+
   collection: Tutor,
-  fields: ['dni','name'],
+  fields: ['name'],
   engine: new EasySearch.Minimongo(),
   defaultSearchOptions:{limit: 4}
+
 })
 
 Tutor.attachSchema(new SimpleSchema({

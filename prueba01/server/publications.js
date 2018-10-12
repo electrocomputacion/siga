@@ -8,7 +8,8 @@ Meteor.publish('projects', function projectsPublication()
 });
 Meteor.publish('tutor', function tutorPublication(){
 
-	return Tutor.find({owner: this.userId});
+	//return Tutor.find({owner: this.userId});
+	return Tutor.find({});
 
 });
 /*Meteor.publish('users', function alumnoPublication()

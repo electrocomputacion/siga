@@ -9,6 +9,7 @@
     "babel-runtime": "^6.20.0",
     "bcrypt": "^1.0.3",
     "bootstrap": "^4.1.1",
+    "core-js": "^2.5.7",
     "jquery": "^3.3.1",
     "jsdom": "^11.11.0",
     "meteor-node-stubs": "~0.2.4",

@@ -21,16 +21,18 @@ Router.onBeforeAction(function(){		//Controla que no se pueda ingresar si no se 
 })
 
 Router.configure({
-
 	layoutTemplate: 'baseLayout',
+	waitOn:function() {
+			 	return [
+				 	function() { return Meteor.subscribe('projects'); },
+				 	function() { return Meteor.subscribe('alumno'); },
+				 	function() { return Meteor.subscribe('tutor'); },
 
-	waitOn: function(){
+			 	];			 	
+	},	
+});
 
-		return Meteor.subscribe('projects'); //con esto vamos a tener disponibles los proyectos publicados en 'publications' en el cliente
-		return Meteor.subscribe('alumno');
-		return Meteor.subscribe('tutor');
-	}
-})
+
 
 Router.route('/', {
 	name: 'home'
@@ -47,6 +49,8 @@ Router.route('/projects',{
 		}
 	}
 })
+
+
 Router.route('/projects_form',{
 	name:'projects_form'
 })
@@ -83,6 +87,9 @@ Router.route('/crearUser',{
 	name: 'crearUser',
 
 })
+
+
+
 Router.route('/alumnoForm',{
 	name: 'alumnoForm',
 	data: {		//data es un objeto que contendra los datos que queremos obtener de proyectos en el template
@@ -94,6 +101,9 @@ Router.route('/alumnoForm',{
 	}
 
 })
+
+
+
 Router.route('/tutor_form',{
 	name: 'tutor_form',
 })
