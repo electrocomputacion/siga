@@ -28,6 +28,10 @@ Template.alumnoForm.events({
      var ingresoLegajo=target.legajo.value;
      var ingresoGrupo_sang=target.grupo_sang.value;
      var ingresoEsc=target.esc_origen.value;
+     var dni_tutor=target.dni_tutor.value;
+     var tutor=Tutor.findOne("dni":"32130334");
+     console.log(dni_tutor);
+     console.log(tutor._id);
      console.log("entro a la funcion");
      //var nombre = "hola";
                                     // le digo que una vez termine vuelva al profile
@@ -59,12 +63,9 @@ Template.alumnoForm.rendered = function() {
   Meteor.typeahead.inject();
 };
 Template.alumnoForm.helpers({
-  tutor: function() {
-    return Tutor.find().fetch().map(
-      function(it){
-        return it.dni;
-      });
-  }
+  tutor: function() { return Tutor.find().fetch().map(
+      function(it){return it.dni;});
+}
 });
 
 //////////////////////////////////
