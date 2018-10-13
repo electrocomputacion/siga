@@ -2,11 +2,10 @@ import { Router } from 'meteor/iron:router';
 import { Meteor } from 'meteor/meteor';
 import { Projects, ProjectsIndex } from '../lib/collections/projects';
 import { Alumno } from '../lib/collections/alumno';
-import { Tutor, TutorIndex } from '../lib/collections/tutor';
+import { Tutor } from '../lib/collections/tutor';
 
 
 Router.onBeforeAction(function(){		//Controla que no se pueda ingresar si no se esta logeado
-
 	if (! Meteor.userId()){
 		Router.go('home');
 		this.next();
@@ -14,7 +13,7 @@ Router.onBeforeAction(function(){		//Controla que no se pueda ingresar si no se 
 	else {
 		if(Router.current().route.getName()==='home'){	//si la ruta actual es home y el usuario ya esta logeado, lo saca de la pagina de loggin y lo lleva a proyectos
 
-			Router.go('profile');
+			Router.go('projects');
 		}
 		this.next();
 	}
@@ -24,12 +23,12 @@ Router.configure({
 	layoutTemplate: 'baseLayout',
 	waitOn:function() {
 			 	return [
-				 	function() { return Meteor.subscribe('projects'); },
+					function() { return Meteor.subscribe('projects'); },
 				 	function() { return Meteor.subscribe('alumno'); },
 				 	function() { return Meteor.subscribe('tutor'); },
 
-			 	];			 	
-	},	
+			 	];
+	},
 });
 
 
