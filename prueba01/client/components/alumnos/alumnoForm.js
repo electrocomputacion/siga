@@ -29,17 +29,19 @@ Template.alumnoForm.events({
      var ingresoGrupo_sang=target.grupo_sang.value;
      var ingresoEsc=target.esc_origen.value;
      var dni_tutor=target.dni_tutor.value;
-     var tutor=Tutor.findOne("dni":"32130334");
+     var tutor=Tutor.findOne({"dni":dni_tutor});
      console.log(dni_tutor);
+     console.log(tutor);
      console.log(tutor._id);
      console.log("entro a la funcion");
      //var nombre = "hola";
-                                    // le digo que una vez termine vuelva al profile
-
+var tutores={_id:tutor._id,}
+console.log(tutores);
 Alumno.insert({
   name:ingresoNombre,
+  tutores:[{_id:tutor._id}],
 })
-//Router.go('crearAlumno');
+Router.go('profile');
   },
 });
 ///////////////////////////////////
