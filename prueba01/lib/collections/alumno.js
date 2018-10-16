@@ -7,8 +7,6 @@ import{ Meteor } from 'meteor/meteor';
 SimpleSchema.extendOptions(['autoform']);
 
 export const Alumno = new Mongo.Collection('alumno');
-
-
 Alumno.attachSchema(new SimpleSchema({
  name: {
   type: String,
@@ -85,17 +83,17 @@ Alumno.attachSchema(new SimpleSchema({
 },
 tutores: {
    type: Array,
-   optional: true,
+   optional: false,
   },
-  'tutor.$': Tutor
+  'tutores.$': String,
+/*  'tutores.$.id': {
+    type:String,
+    optional: false,
+  }*/
 }));
-
 Alumno.allow({
-
   insert: function(userId, doc){
-
     return doc.owner===userId;
-
   }
 })
 

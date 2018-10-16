@@ -7,16 +7,6 @@ SimpleSchema.extendOptions(['autoform']);
 //import{ EasySearch } from 'meteor/easy:search';
 
 export const Tutor = new Mongo.Collection('tutor');
-
-/*export const TutorIndex = new EasySearch.Index({
-
-  collection: Tutor,
-  fields: ['name'],
-  engine: new EasySearch.Minimongo(),
-  defaultSearchOptions:{limit: 4}
-
-})*/
-
 Tutor.attachSchema(new SimpleSchema({
  name: {
   type: String,

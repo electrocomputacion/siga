@@ -20,31 +20,59 @@ Template.alumnoForm.events({
   "submit #crearAlumno": function(event, template){   //captura el evento submit del formulario
      event.preventDefault();
      const target=event.target;
-     var ingresoNombre=target.name.value;     //se alamcena el contenido del input en una variable
-     var ingresoApellido=target.surname.value;
-     var ingresoDni=target.dni.value;
-     var ingresoDireccion=target.address.value;
-     var ingresoFecha=target.fech_nac.value;
-     var ingresoLegajo=target.legajo.value;
-     var ingresoGrupo_sang=target.grupo_sang.value;
-     var ingresoEsc=target.esc_origen.value;
+     var newAlumno= new Object();
+     //var tutores= new Object();
+     newAlumno.name=target.name.value;     //se alamcena el contenido del input en una variable
+     newAlumno.surname=target.surname.value;
+     newAlumno.dni=target.dni.value;
+     newAlumno.address=target.address.value;
+     newAlumno.fech_nac=target.fech_nac.value;
+     newAlumno.legajo=target.legajo.value;
+     newAlumno.grupo_sang=target.grupo_sang.value;
+     newAlumno.esc_origen=target.esc_origen.value;
      var dni_tutor=target.dni_tutor.value;
-     var tutor=Tutor.findOne({"dni":dni_tutor});
-     console.log(dni_tutor);
-     console.log(tutor);
+     tutor=Tutor.findOne({"dni":dni_tutor});
      console.log(tutor._id);
-     console.log("entro a la funcion");
+     newAlumno.tutores=tutor._id;
+     //console.log(tutores);
+     console.log(newAlumno);
+     ////////////////////////////////////
+     /*Meteor.call("new_alumno", newAlumno, function(error, result){  //llamo al metedo que crea el usuario del lado servidor
+       if(error){
+         alert(error.message);
+         console.log("error", error);
+         console.log("result",result); //en caso de error tengo que definir una funcion
+       }
+       if(result){
+         console.log("result",result);
+
+        Router.go('profile'); //al crear el usuario devuelvo el perfil creado
+       }
+     });*/
+     //////////////////////////////
+     //console.log(dni_tutor);
+     //console.log(tutor);
+     //console.log(tutor._id);
+     //console.log("entro a la funcion");
      //var nombre = "hola";
-var tutores={_id:tutor._id,}
-console.log(tutores);
+//    var tutores= new Object();
+//tutores.id=tutor._id;
+//console.log(tutores);
 Alumno.insert({
-  name:ingresoNombre,
-  tutores:[{_id:tutor._id}],
+  name:newAlumno.name,     //se alamcena el contenido del input en una variable
+  surname:newAlumno.surname,
+  dni:newAlumno.dni,
+  address:newAlumno.address,
+  fech_nac:newAlumno.fech_nac,
+  legajo:newAlumno.legajo,
+  grupo_sang:newAlumno.grupo_sang,
+  esc_origen:newAlumno.esc_origen,
+  tutores:newAlumno.tutores,
 })
 Router.go('profile');
   },
 });
-///////////////////////////////////
+//////////////////////////////////
 /*Template.alumnoForm.helpers({
   settings: function() {
     return {
