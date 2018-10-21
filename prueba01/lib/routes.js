@@ -26,6 +26,7 @@ Router.configure({
 					function() { return Meteor.subscribe('projects'); },
 				 	function() { return Meteor.subscribe('alumno'); },
 				 	function() { return Meteor.subscribe('tutor'); },
+					function() { return Meteor.subscribe('curso'); },
 
 			 	];
 	},
@@ -105,4 +106,7 @@ Router.route('/alumnoForm',{
 
 Router.route('/tutor_form',{
 	name: 'tutor_form',
+})
+Router.route('/cursos_form',{
+	name: 'cursos_form',
 })

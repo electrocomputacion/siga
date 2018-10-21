@@ -1,0 +1,56 @@
+<template name="cursosForm">
+<div class="row">
+	<div class="col s12">
+<h2>Cargar nuevo curso</h2>
+	<!--//////////////////////////////////////////////////////-->
+        <form class="form" id="crearCurso">
+				<div class="modal-body">
+			  		<div class="panel-heading">
+				  		<h3>Cargar Nuevo Curso</h3>
+				  	</div>
+			<div class="panel-body">
+					  	<div class="form-group col-md-12">
+						          <label for="usr">Año</label>
+                      <select value="" class="form-control form-control-lg" id="año">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                      </select>
+						  </div>
+						<div class="form-group col-md-12">
+						<label for="usr">CICLO</label>
+					<select value="" class="form-control form-control-lg" id="ciclo" >
+						<option selected="selected" disabled value="">Seleccione un Ciclo</option>
+							<option value="cb">Ciclo Básico</option>
+              <option value="cs">Ciclo Superior</option>
+            </select>
+					</div>
+				<div class="form-group col-md-12">
+					<label for="usr">TURNO</label>
+					<select value="" class="form-control form-control-lg" id="turno">
+						<option selected="selected" disabled value="">Seleccione el Turno</option>
+              <option value="mañana">Turno Mañana</option>
+              <option value="tarde">Turno Tarde</option>
+            </select>
+					</div>
+					<div class="form-group col-md-12">
+						<label for="usr">DIVISIÓN</label>
+          <select class="form-control form-control-lg" id="division">
+						<option selected="selected" disabled value="">Seleccione primero el Ciclo...</option>
+          				{{#each getArray}}
+          					<option value="{{num}}">{{num}}</option>
+          				{{/each}}
+          </select>
+					</div>
+			</div>
+</div>
+<div class="modal-footer">
+<button type="submit" id="submit" class="btn btn-success">Guardar</button>
+<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+</div>
+</form>
+
+</div>
+</div>
+</template>

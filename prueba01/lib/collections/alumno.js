@@ -23,24 +23,22 @@ Alumno.attachSchema(new SimpleSchema({
   optional: true,
  },
  dni: {           //restringir dni con mascara obligatorio desde el formulario
-  type: Number,
+  type: String,
   label: 'DNI',
-  min: 1000000,
-  max: 99999999,
-  optional: true,
+  optional: false,
  },
  address: {
   type: String,
   label: 'Dirección',
   min:4,
   max: 200,
-  optional: true,
+  optional: false,
  },
  fech_nac: {
   type: Date,
   label: 'Fecha Nacimiento',
   max: 200,
-  optional: true,
+  optional: false,
  },
  legajo: {
   type: Number,
@@ -58,7 +56,7 @@ Alumno.attachSchema(new SimpleSchema({
   type: String,
   label: 'Escuela Primaria',
   max: 200,
-  optional: true,
+  optional: false,
  },
 
  owner:{
@@ -81,7 +79,7 @@ Alumno.attachSchema(new SimpleSchema({
    type: "hidden"
   }
 },
-tutores: {
+tutores: {            //relación uno a muchos con la collección tutores
    type: Array,
    optional: false,
   },
