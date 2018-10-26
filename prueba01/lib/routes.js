@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Projects, ProjectsIndex } from '../lib/collections/projects';
 import { Alumno } from '../lib/collections/alumno';
 import { Tutor } from '../lib/collections/tutor';
-
+import { Curso } from '../lib/collections/curso';
 
 Router.onBeforeAction(function(){		//Controla que no se pueda ingresar si no se esta logeado
 	if (! Meteor.userId()){
@@ -32,14 +32,11 @@ Router.configure({
 	},
 });
 
-
-
 Router.route('/', {
 	name: 'home'
 })
 
 Router.route('/projects',{
-
 	name :'projects',
 	data: {		//data es un objeto que contendra los datos que queremos obtener de proyectos en el template
 		projects(){
@@ -49,7 +46,6 @@ Router.route('/projects',{
 		}
 	}
 })
-
 
 Router.route('/projects_form',{
 	name:'projects_form'
@@ -85,28 +81,25 @@ Router.route('/profile',{												//esto define la ruta al profile del usuari
 })
 Router.route('/crearUser',{
 	name: 'crearUser',
-
 })
-
-
-
 Router.route('/alumnoForm',{
 	name: 'alumnoForm',
-	data: {		//data es un objeto que contendra los datos que queremos obtener de proyectos en el template
-		tutor(){
-			//return Projects.find() //solo devolvera los proyectos del usuario logeado (control echo en publications)
-				console.log(TutorIndex);
-				return TutorIndex;
-		}
-	}
-
 })
-
-
-
 Router.route('/tutor_form',{
 	name: 'tutor_form',
 })
 Router.route('/cursos_form',{
 	name: 'cursos_form',
+})
+
+Router.route('/AsignAlmCurso',{
+	name: 'AsignAlmCurso',
+	data: {		//data es un objeto que contendra los datos que queremos obtener de proyectos en el template
+		curso(){											//contiene todos los cursos disponibles
+				let curso=Curso.find({});
+				//console.log(curso);
+				return curso;
+		}
+	}
+
 })

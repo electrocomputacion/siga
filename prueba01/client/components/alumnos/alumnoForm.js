@@ -1,5 +1,6 @@
 import {mongo} from 'meteor/mongo';
 import  {Meteor} from 'meteor/meteor'
+import {Session} from 'meteor/session'
 import {Alumno} from '../../../lib/collections/alumno'
 import { Tutor } from '../../../lib/collections/tutor'
 
@@ -35,6 +36,11 @@ Template.alumnoForm.events({
     esc_origen:newAlumno.esc_origen,
     tutores:newAlumno.tutores,
 })
+let form=Session.get("formulario");
+console.log(form);
+if (form){
+  Router.go('AsignAlmCurso');
+}
 Router.go('profile');
   },
 });

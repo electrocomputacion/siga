@@ -42,34 +42,30 @@ Template.cursosForm.events({
      newCurso.ciclo=target.ciclo.value;
      newCurso.turno=target.turno.value;
      newCurso.division=Number(target.division.value);
-     //console.log(newCurso);
      loggedInUser=Meteor.user();
-     //console.log(año);
      //Esta consulta sirve para que no se creen cursos duplicados
      var cursos = Curso.findOne({año: newCurso.año,ciclo:newCurso.ciclo,turno:newCurso.turno,division:newCurso.division,});
-     //var cursos = Curso.find({año: newCurso.año,}).count();
-     ////////////////////////////////////
-     //console.log(cursos);
-     if(cursos){
-       if(cursos.ciclo=="cb"){var msjciclo="Ciclo Básico"}  //convierto para poder mostrar los mensajes
+     if(cursos){      //compruebo q no exista el curso
+       if(cursos.ciclo=="cb"){var msjciclo="Ciclo Básico"}  //convierto para poder mostrar
        if(cursos.ciclo=="cs"){var msjciclo="Ciclo Superior"}
        alert("El Curso "+cursos.año+"° "+cursos.division+"° "+"Turno "+cursos.turno+" del "+msjciclo+" ya existe");
      }
      else{
-    if (Roles.userIsInRole(loggedInUser, ['admin','vice_director'])) {
-  Curso.insert({
-    año:newCurso.año,
-    ciclo:newCurso.ciclo,
-    turno:newCurso.turno,
-    division:newCurso.division,
-  })
-  alert("El Curso a sido creado!");
-}
-else {
-  alert("No esta Autorizado a crear Nuevos Cursos");
-  //throw new Meteor.Error(403, "No esta Autorizado a crear Nuevos Cursos");
-  //alert(error.message); //probar si funciona
-}
-}//fin else que permite insertar
+          if (Roles.userIsInRole(loggedInUser, ['admin','vice_director'])) {  //compruebo si tiene permisos
+            Curso.insert({
+              año:newCurso.año,
+              ciclo:newCurso.ciclo,
+              turno:newCurso.turno,
+              division:newCurso.division,
+            })
+            alert("El Curso a sido creado!");
+          }
+    else {
+      alert("No esta Autorizado a crear Nuevos Cursos");
+      router.go('profile');
+      //throw new Meteor.Error(403, "No esta Autorizado a crear Nuevos Cursos");
+      //alert(error.message); //probar si funciona
+    }
+  }//fin else que permite insertar
 },
 })
