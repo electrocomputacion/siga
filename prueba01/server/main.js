@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+//import {Session} from 'meteor/session';
 /*Meteor.methods({
 
   'adminCreation':function(admin){
@@ -17,6 +18,11 @@ import { Meteor } from 'meteor/meteor';
    }  //fin de la funcion
 });*/
 Meteor.startup(() => {
+///////////////////////////////////////////////
+  //Inicializo las variables de seción
+  //Session.set("dni",0);
+  //Session.set("formulario",0);
+//////////////////////////////////////////////
 Accounts.config({
 // enable client user creation
 forbidClientAccountCreation: false,
