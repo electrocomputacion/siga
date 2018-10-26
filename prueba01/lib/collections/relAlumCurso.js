@@ -6,7 +6,7 @@ import{ check } from 'meteor/check';
 import{ Meteor } from 'meteor/meteor';
 
 
-export const RelAlumnCurso = new Mongo.Collection('relAlumnCurso');
+export const RelAlumnCurso = new Mongo.Collection('relalumncurso');
 RelAlumnCurso.attachSchema(new SimpleSchema({
   alumno:{
     type: String,
