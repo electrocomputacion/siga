@@ -6,6 +6,10 @@ import { Curso } from '../../../lib/collections/curso'
 import{ RelAlumnCurso } from '../../../lib/collections/relAlumCurso'
 
 Template.AsignAlmCurso.rendered = function() {
+  let dni=Session.get("dni");
+  if (dni){
+  $('#dni_alumno').val(dni);
+  Session.set("dni",0);}
   Meteor.typeahead.inject();
 };
 Template.AsignAlmCurso.helpers({

@@ -20,10 +20,13 @@ Template.alumnoForm.events({
      newAlumno.esc_origen=target.esc_origen.value;
      var dni_tutor=target.dni_tutor.value;
      tutor=Tutor.findOne({"dni":dni_tutor});
-     console.log(tutor._id);
+     //console.log(tutor._id);
      newAlumno.tutores=tutor._id;
      //console.log(tutores);
-     console.log(newAlumno);
+     //console.log(newAlumno);
+     let cuenta=Alumno.find({"dni":newAlumno.dni}).count();
+     let form=Session.get("formulario");
+     if(cuenta===0){    //veo si el dni ya existe
      ////////////////////////////////////
   Alumno.insert({
     name:newAlumno.name,     //se alamcena el contenido del input en una variable
@@ -36,12 +39,36 @@ Template.alumnoForm.events({
     esc_origen:newAlumno.esc_origen,
     tutores:newAlumno.tutores,
 })
-let form=Session.get("formulario");
-console.log(form);
-if (form){
+//Controlar el ingreso correcto del alumno¿?
+//if(error){
+//}
+//else{
+
+//console.log(form);
+if (form==1){
+  Session.set("formulario",0);
+  Session.set("dni",newAlumno.dni);
+  alert("Alumno Ingresado con Exito!");
   Router.go('AsignAlmCurso');
 }
-Router.go('profile');
+else{
+  alert("Alumno Ingresado con Exito!");
+Router.go('alumnoForm');
+  }
+} //fin del if de cuenta
+else{
+  if (form==1){
+    Session.set("formulario",0);
+    Session.set("dni",newAlumno.dni);
+    alert("El Alumno ya existe!");
+    Router.go('AsignAlmCurso');
+  }
+  else{
+    alert("El Alumno ya existe!");
+  Router.go('alumnoForm');
+
+  }
+}
   },
 });
 //////////////////////////////////
