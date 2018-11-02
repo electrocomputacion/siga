@@ -26,6 +26,8 @@ Template.alumnoForm.events({
      //console.log(newAlumno);
      let cuenta=Alumno.find({"dni":newAlumno.dni}).count();
      let form=Session.get("formulario");
+     let loggedInUser=Meteor.user();
+     if (Roles.userIsInRole(loggedInUser, ['admin','vice_director','secretario'])){
      if(cuenta===0){    //veo si el dni ya existe
      ////////////////////////////////////
   Alumno.insert({
@@ -39,12 +41,7 @@ Template.alumnoForm.events({
     esc_origen:newAlumno.esc_origen,
     tutores:newAlumno.tutores,
 })
-//Controlar el ingreso correcto del alumno¿?
-//if(error){
-//}
-//else{
 
-//console.log(form);
 if (form==1){
   Session.set("formulario",0);
   Session.set("dni",newAlumno.dni);
@@ -69,7 +66,12 @@ else{
 
   }
 }
-  },
+}//fin del control de roles
+else{
+  alert("No esta autorizado a inscribir alumnos");
+  Router.go('profile');
+}//else del error de permisos
+},//fin de la funcion del event
 });
 //////////////////////////////////
 Template.alumnoForm.rendered = function() {

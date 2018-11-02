@@ -103,3 +103,6 @@ Router.route('/AsignAlmCurso',{
 	}
 
 })
+Router.route('/tablaAlumno',{
+	name: 'tablaAlumno',
+})

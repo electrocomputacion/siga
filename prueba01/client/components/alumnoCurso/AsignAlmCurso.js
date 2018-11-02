@@ -26,10 +26,12 @@ Template.AsignAlmCurso.events({
    newRelacion.alumno=target.dni_alumno.value;
    newRelacion.fecha=target.fecha.value;
    let alumno=Alumno.find({"dni":newRelacion.alumno}).count();
+   let idAlumno=Alumno.find({"dni":newRelacion.alumno});
+   newRelacion.id=idAlumno._id;
    ////////////////////////////////////
 if(alumno){
 RelAlumnCurso.insert({
-  alumno:newRelacion.alumno,
+  alumno:newRelacion.id,
   curso:newRelacion.curso,
   fecha:newRelacion.fecha,
 })

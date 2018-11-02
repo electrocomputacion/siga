@@ -84,10 +84,13 @@ tutores: {            //relación uno a muchos con la collección tutores
    optional: false,
   },
   'tutores.$': String,
-/*  'tutores.$.id': {
-    type:String,
-    optional: false,
-  }*/
+
+id_notas: {            //notas correspondiente al alumno
+   type: Array,
+    optional: true,     //desactivar
+  },
+    'id_notas.$': String,
+
 }));
 Alumno.allow({
   insert: function(userId, doc){
