@@ -21,8 +21,7 @@ Template.tablaAlumno.helpers({
     console.log(idCurso);
     let alumnoId = RelAlumnCurso.find({
       "curso": idCurso
-    },
-  {field:"alumno"}
+    }
 );
   console.log("alumnoId es:");
     console.log(alumnoId);
