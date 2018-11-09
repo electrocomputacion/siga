@@ -3,7 +3,7 @@ import { Projects } from '../lib/collections/projects';
 import {Tutor} from '../lib/collections/tutor';
 import {Curso} from '../lib/collections/curso';
 import {Alumno} from '../lib/collections/alumno';
-
+import {RelAlumnCurso} from '../lib/collections/relalumncurso';
 //var usuario=Meteor.userId();
 
 Meteor.publish('projects', function projectsPublication()
@@ -17,7 +17,7 @@ Meteor.publish('tutor', function tutorPublication(){
 	return Tutor.find({});
 
 });
-Meteor.publish('alumno', function cursoPublication(){
+Meteor.publish('alumno', function alumnoPublication(){
 
 	//return Tutor.find({owner: this.userId});
 	return Alumno.find({});
@@ -30,7 +30,7 @@ Meteor.publish('curso', function cursoPublication(){
 
 });
 //if (Roles.userIsInRole(loggedInUser, ['admin','vice_director'])){
-Meteor.publish('relAlumCurso', function cursoPublication(){
+Meteor.publish('relalumncurso', function relalumncursoPublication(){
 	return RelAlumnCurso.find({});//preguntar si esto funciona
 });
 //}

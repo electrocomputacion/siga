@@ -3,7 +3,7 @@ import  {Meteor} from 'meteor/meteor'
 import {Session} from 'meteor/session'
 import {Alumno} from '../../../lib/collections/alumno'
 import { Curso } from '../../../lib/collections/curso'
-import{ RelAlumnCurso } from '../../../lib/collections/relAlumCurso'
+import{ RelAlumnCurso } from '../../../lib/collections/relalumncurso'
 
 Template.AsignAlmCurso.rendered = function() {
   let dni=Session.get("dni");
@@ -26,8 +26,10 @@ Template.AsignAlmCurso.events({
    newRelacion.alumno=target.dni_alumno.value;
    newRelacion.fecha=target.fecha.value;
    let alumno=Alumno.find({"dni":newRelacion.alumno}).count();
-   let idAlumno=Alumno.find({"dni":newRelacion.alumno});
+   let idAlumno=Alumno.findOne({"dni":newRelacion.alumno});
    newRelacion.id=idAlumno._id;
+   console.log(idAlumno);
+   console.log(newRelacion.id);
    ////////////////////////////////////
 if(alumno){
 RelAlumnCurso.insert({
