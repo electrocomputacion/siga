@@ -19,7 +19,7 @@ Template.tablaAlumno.helpers({
     //console.log(curso);
     //console.log("el idcurso");
     console.log(idCurso);
-    let alumnoId = RelAlumnCurso.find({
+    let alumnoId = RelAlumnCurso.findOne({
       "curso": idCurso
     }
 );
