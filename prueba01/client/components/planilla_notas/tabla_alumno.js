@@ -15,46 +15,26 @@ Template.tablaAlumno.helpers({
       "ciclo": "cs"
     });
     let idCurso=curso._id;
-    //let idCurso="rff7Kh7oWuuHc4jMu";
-    //console.log(curso);
-    //console.log("el idcurso");
-    console.log(idCurso);
-    let alumnoId = RelAlumnCurso.find({"curso": idCurso}).fetch();
-  console.log("alumnoId es:");
-    console.log(alumnoId);
-    arreglo = [{
-      alum: alumnoId.alumno
-    },
-    {
-      alum:alumnoId.alumno
-    }
-  ];
-
-    return arreglo;
+////CONSULTA///////////////////////////////////////////////////
+var coleccion_alumno=[];
+var curso_alumno = RelAlumnCurso.find({"curso": idCurso});
+curso_alumno.forEach(function(d){
+  var alumno=Alumno.findOne({"_id":d.alumno});
+  coleccion_alumno.push(alumno);
+})
+coleccion_alumno.sort(function (a, b) {     //funcion que ordena los datos por apellido
+  if (a.surname > b.surname) {
+    return 1;
+  }
+  if (a.surname < b.surname) {
+    return -1;
+  }
+  // a must be equal to b
+  return 0;
+});
+console.log("colecion alumnos",coleccion_alumno);
+///////////////////////////////////////////////////////////////
+    return coleccion_alumno;
   }
   });
-  Template.tablaAlumno.rendered = function(){
-    console.log("dentro del rendered");
-    var arreglo = [];
-    let curso = Curso.findOne({
-      "año": 1,
-      "division": 1,
-      "turno": "mañana",
-      "ciclo": "cs"
-    });
-    let idCurso=curso._id;
-
-    //let idCurso="rff7Kh7oWuuHc4jMu";
-    console.log(curso);
-    console.log("el idcurso");
-    console.log(idCurso);
-    let curso_alumno = RelAlumnCurso.findOne({"curso": idCurso});
-    let alumnoId=curso_alumno.alumno;
-    console.log(curso_alumno);
-    console.log("alumnoId es:");
-    console.log(alumnoId);
-    arreglo = [{
-      alum: curso
-    }];
-  //  return arreglo;
-  };
+//////////////////////////////////////////////////////////

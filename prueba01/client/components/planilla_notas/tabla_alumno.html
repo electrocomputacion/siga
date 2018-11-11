@@ -1,6 +1,6 @@
 <template name="tablaAlumno">
 
-  <table class="table table-bordered">
+  <table class="table table-bordered table-responsive">
     <thead>
       <tr>
         <th scope="col" colspan="18">Curso:</th>
@@ -16,7 +16,7 @@
     </thead>
     <thead>
     <tr>
-      <th scope="col">Documento</th>
+      <th scope="col-12">Documento</th>
       <th scope="col">Apellido y Nombre</th>
       <th scope="col">N1</th>
       <th scope="col">N2</th>
@@ -36,13 +36,35 @@
       <th scope="col">P.Final</th>
     </tr>
   </thead>
-  <tr>
-    <th>
       {{#each alumnos}}
-        <span>{{alum}}</span>
-      {{/each}}
-    </th>
+      <tr>
+        <td>
+          {{dni}}
+        </td>
+      <td>
+        {{surname}}  {{name}}
+      </td>
+      <td scope="col"><input type="text" class="form-control-plaintext"></td>
+      <td scope="col"><input type="text" class="form-control-plaintext"></td>
+      <td scope="col"><input type="text" class="form-control-plaintext"></td>
+      <td scope="col"><input type="text" class="form-control-plaintext"></td>
+      <th scope="col"></th>
+      <td scope="col"><input type="text" class="form-control-plaintext"></td>
+      <td scope="col"><input type="text" class="form-control-plaintext"></td>
+      <td scope="col"><input type="text" class="form-control-plaintext"></td>
+      <td scope="col"><input type="text" class="form-control-plaintext"></td>
+      <th scope="col"></th>
+      <td scope="col"><input type="text" class="form-control-plaintext"></td>
+      <td scope="col"><input type="text" class="form-control-plaintext"></td>
+      <td scope="col"><input type="text" class="form-control-plaintext"></td>
+      <td scope="col"><input type="text" class="form-control-plaintext"></td>
+      <th scope="col"></th>
+      <th scope="col"><input type="text" class="form-control-plaintext"></th>
 
-  </tr>
+      </tr>
+      {{/each}}
+
+
+
 </table>
 </template>
