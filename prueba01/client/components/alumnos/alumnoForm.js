@@ -50,6 +50,7 @@ if (form==1){
 }
 else{
   alert("Alumno Ingresado con Exito!");
+  $('#crearAlumno')[0].reset();
 Router.go('alumnoForm');
   }
 } //fin del if de cuenta
@@ -78,9 +79,12 @@ Template.alumnoForm.rendered = function() {
   Meteor.typeahead.inject();
 };
 Template.alumnoForm.helpers({
-  tutor: function() { return Tutor.find().fetch().map(
-      function(it){return it.dni;});
-}
+  tutor: function() {
+    return Tutor.find().fetch().map(
+      function(it) {
+        return it.dni;
+      });
+  }
 });
 
 //////////////////////////////////
