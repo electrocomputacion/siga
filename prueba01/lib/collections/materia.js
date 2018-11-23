@@ -13,6 +13,11 @@ nombre: {
   label: 'Materia',
   optional: false,
 },
+codigo:{
+  type: String,
+  label: 'Código',
+  optional: false,
+},
 owner:{
  type: String,
  label: "Propietario",
@@ -43,3 +48,8 @@ id_curso: {            //relación uno a muchos con la collección curso
     return doc.owner===userId;
   }
 })*/
+Materia.allow({
+  insert: function(userId, doc){
+    return doc.owner===userId;
+  }
+})

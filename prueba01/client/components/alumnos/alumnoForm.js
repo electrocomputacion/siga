@@ -10,8 +10,8 @@ Template.alumnoForm.events({
      event.preventDefault();
      const target=event.target;
      var newAlumno= new Object();     //creo un objeto para almacenar los valores del formulario
-     newAlumno.name=target.name.value;     //se alamcena el contenido del input en una objeto
-     newAlumno.surname=target.surname.value;
+     newAlumno.name=target.name.value.toUpperCase();     //se alamcena el contenido del input en una objeto
+     newAlumno.surname=target.surname.value.toUpperCase();
      newAlumno.dni=target.dni.value;
      newAlumno.address=target.address.value;
      newAlumno.fech_nac=target.fech_nac.value;

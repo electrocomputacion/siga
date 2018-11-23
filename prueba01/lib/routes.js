@@ -105,6 +105,17 @@ Router.route('/AsignAlmCurso',{
 	}
 
 })
+Router.route('/materiaForm',{
+	name: 'materiaForm',
+	data: {		//data es un objeto que contendra los datos que queremos obtener de proyectos en el template
+		curso(){											//contiene todos los cursos disponibles
+				let curso=Curso.find({});
+				//console.log(curso);
+				return curso;
+		}
+	}
+
+})
 Router.route('/tablaAlumno',{
 	name: 'tablaAlumno',
 })
