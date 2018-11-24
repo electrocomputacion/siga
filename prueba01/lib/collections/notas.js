@@ -26,10 +26,10 @@ created: {
  }
 },
 id_materia: {            //relación uno a muchos con la collección materia, en un array se guardan todos los id de materias
-   type: Array,
+   type: String,
    optional: false,
   },
-  'id_materia.$': String,
+
 }));
 Notas.allow({
   insert: function(userId, doc){

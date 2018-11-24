@@ -24,7 +24,7 @@ Template.materiaForm.events({
     id_curso:newMateria.curso,
 })
 console.log("id materia",idMateria);
-
+$('#crearMateria')[0].reset();
 alert("Materia ingresada Exitosamente!!!");
 } //fin del if de cuenta
 else{

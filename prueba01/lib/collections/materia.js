@@ -38,10 +38,9 @@ created: {
  }
 },
 id_curso: {            //relación uno a muchos con la collección curso
-   type: Array,
+   type: String,
    optional: false,
   },
-  'id_curso.$': String,
 }));
 /*Notas.allow({
   insert: function(userId, doc){
