@@ -81,8 +81,16 @@ Router.route('/profile',{												//esto define la ruta al profile del usuari
 		}
 	}
 })
-Router.route('/crearUser',{
-	name: 'crearUser',
+Router.route('/crearUser',function(){
+	//var user=Meteor.user();
+	var usuario=Roles.userIsInRole(this.userId,['admin']);
+
+	if(usuario){
+		Router.go('crearUser');
+	}
+	else{
+		Router.go('home');
+	}
 })
 Router.route('/alumnoForm',{
 	name: 'alumnoForm',

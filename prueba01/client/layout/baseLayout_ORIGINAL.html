@@ -1,0 +1,42 @@
+<template name="baseLayout333333">
+  <header class="header">
+  <nav class="navbar navbar-expand-lg  navbar-light fixed-top" style="background-color: #e3f2fd;">
+    <!-- <div class="container">-->
+    <ul class="navbar-nav">
+      {{#if currentUser}}
+        <li class="nav-item active">
+          <a class="nav-link" href="{{ pathFor 'profile'}}">Mi Perfil</a>
+        </li>
+        <!--<li> <a href="{{pathFor 'act_profile'}}">Actualizar Perfil</a></li>-->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            Administración
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{ pathFor 'alumnoForm'}}">Cargar Alumno</a>
+            <a class="dropdown-item" href="{{ pathFor 'tutor_form'}}">Nuevo Tutor</a>
+            <a class="dropdown-item" href="{{ pathFor 'cursos_form'}}">Nuevo Curso</a>
+          </div>
+        </li>
+      {{/if}}
+    </ul>
+    <ul class="nav navbar-nav ml-auto">
+
+
+      {{> loginButtons}}
+
+
+  </ul>
+    <!-- </div>-->
+  </nav>
+</header>
+<body>
+  <div class="container">
+    {{#momentum plugin="growl"}}
+      {{#if Template.subscriptionsReady}}
+        {{>yield}}
+      {{/if}}
+    {{/momentum}}
+  </div>
+</body>
+</template>
