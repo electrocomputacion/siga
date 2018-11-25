@@ -34,6 +34,9 @@ Meteor.publish('curso', function cursoPublication(){
 Meteor.publish('relalumncurso', function relalumncursoPublication(){
 	return RelAlumnCurso.find({});//preguntar si esto funciona
 });
+Meteor.publish("roles", function (){
+    return Meteor.roles.find({});
+});
 //}
 /*Meteor.publish('users', function alumnoPublication()
 {

@@ -29,6 +29,7 @@ Router.configure({
 				 	function() { return Meteor.subscribe('tutor'); },
 					function() { return Meteor.subscribe('curso'); },
 					function() { return Meteor.subscribe('relalumncurso'); },
+					function () { return Meteor.subscribe("roles");	},
 
 			 	];
 	},
@@ -74,24 +75,26 @@ Router.route('/profile',{												//esto define la ruta al profile del usuari
 	data: {
 		user(){
 			return{
-				id:Meteor.user()._id,
-				email: Meteor.user().emails[0].address,
-				profile: Meteor.user().profile
+				id:Meteor.userId(), // ver porq no funciona si hay mas de un usuario
+				//profile:Meteor.users.findOne({_id:Meteor.userId()}).profile,
+				//email:Meteor.users.findOne({_id:this.userId}).email[0].address,
+			//	email: Meteor.users.findOne(_id:this.userId).emails[0].address,
+				//profile: Meteor.user().profile
 			}
 		}
 	}
 })
 Router.route('/crearUser',function(){
-	//var user=Meteor.user();
-	var usuario=Roles.userIsInRole(this.userId,['admin']);
-
+	var user=this.userId;
+	var usuario=Roles.userIsInRole(user,['admin']);
 	if(usuario){
-		Router.go('crearUser');
+		this.render('crearUser')
 	}
 	else{
-		Router.go('home');
+		this.render('profile')				//si no esta autorizado no puede crear perfil
 	}
 })
+
 Router.route('/alumnoForm',{
 	name: 'alumnoForm',
 })
