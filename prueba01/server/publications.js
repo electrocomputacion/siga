@@ -18,7 +18,7 @@ Meteor.publish('tutor', function tutorPublication(){
 
 });
 Meteor.publish('alumno', function alumnoPublication(){
-var usuario=Roles.userIsInRole(this.userId,['docente']);
+var usuario=Roles.userIsInRole(this.userId,['docente','admin']);
 	if (usuario){
 	//return Tutor.find({owner: this.userId});
 	return Alumno.find({});

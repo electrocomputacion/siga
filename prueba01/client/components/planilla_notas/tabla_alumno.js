@@ -15,6 +15,7 @@ Template.tablaAlumno.helpers({
       "ciclo": "cs"
     });
     let idCurso=curso._id;
+    console.log(idCurso);
 ////CONSULTA///////////////////////////////////////////////////
 var coleccion_alumno=[];
 var curso_alumno = RelAlumnCurso.find({"curso": idCurso});
