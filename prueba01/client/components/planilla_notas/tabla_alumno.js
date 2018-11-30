@@ -58,8 +58,8 @@ Template.tablaAlumno.events({
   else{
     let selector='#'+viejoId;
     console.log(selector);
-    $('#t1n233463018').change(function(event){
-      var valor=event.value();
+    $(selector).blur(function(event){
+      var valor=$(selector).val();
       console.log("El valor es:",valor);
 
       Temaplate.instance().viejoId.set(nuevoId);
