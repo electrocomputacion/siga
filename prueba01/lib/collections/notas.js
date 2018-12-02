@@ -6,6 +6,16 @@ SimpleSchema.extendOptions(['autoform']);
 
 export const Notas = new Mongo.Collection('notas');
 Notas.attachSchema(new SimpleSchema({
+  nota:{
+    type:String,
+    label:"nota",
+    optional:false,
+  },
+  idTabla:{
+    type:String,
+    label:"idTabla",
+    optional:false,
+  },
 owner:{
  type: String,
  label: "Propietario",

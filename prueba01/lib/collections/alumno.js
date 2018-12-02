@@ -97,7 +97,25 @@ Alumno.allow({
     return doc.owner===userId;
   }
 })
+Alumno.allow({
+  update: function(userId, doc){
+    return doc.owner===userId;
+  }
+})
 
+Meteor.methods({
+  'id_notas.update'(alumnoId,idNota){
+    check(alumnoId,String);
+    check(idNota,String);
+    Alumno.update({_id:alumnoId}, {$push:{
+      "id_notas":idNota,
+    }
+
+  });
+return;
+  }
+
+})
 Meteor.methods({
   'alumno.remove'(alumnoId){
     check(alumnoId, String );
