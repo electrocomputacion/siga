@@ -3,6 +3,7 @@ import { Projects } from '../lib/collections/projects';
 import {Tutor} from '../lib/collections/tutor';
 import {Curso} from '../lib/collections/curso';
 import {Alumno} from '../lib/collections/alumno';
+import {Notas} from '../lib/collections/notas';
 import {RelAlumnCurso} from '../lib/collections/relalumncurso';
 //var usuario=Meteor.userId();
 
@@ -36,6 +37,9 @@ Meteor.publish('relalumncurso', function relalumncursoPublication(){
 });
 Meteor.publish("roles", function (){
     return Meteor.roles.find({});
+});
+Meteor.publish('notas', function notasPublication(){
+	return Notas.find({});//preguntar si esto funciona
 });
 //}
 /*Meteor.publish('users', function alumnoPublication()

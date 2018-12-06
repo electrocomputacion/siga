@@ -21,19 +21,54 @@ Template.tablaAlumno.helpers({
       "turno": "mañana",
       "ciclo": "cs"
     });
-    let idCurso = curso._id;
-    console.log(idCurso);
+    var idCurso = curso._id;
+    //console.log(idCurso);
     ////CONSULTA///////////////////////////////////////////////////
     var coleccion_alumno = [];
     var curso_alumno = RelAlumnCurso.find({
-      "curso": idCurso
+      //"curso": "rff7Kh7oWuuHc4jMu",
     });
+    console.log("curso_alumno",curso);
     curso_alumno.forEach(function(d) {
       var alumno = Alumno.findOne({
         "_id": d.alumno
       });
+//////////////////////////////////////////
+
+      /*var idNotas=alumno.id_notas;
+      console.log(idNotas);
+      let largo_array=idNotas.length;
+
+      if(largo_array>0){
+                console.log("hay notas");
+                var todasNotas=[];
+                idNotas.forEach(function(e){    //funcion que itera sobre todas las notas disponibles
+                  //console.log(e);
+                var id_notas = Notas.findOne({    //consulto las notas existentes del alumno y de la materia correspondiente
+                  "_id":e,
+                  "id_materia":"biologia",
+                });
+                todasNotas.forEach(function(a){   //arreglo que itera sobre las notas disponibles
+                  let ida=a.idTabla;
+                  var id="#"+ida;              //guardo el id de la celda de la tabla
+                  let nota=a.nota;                //guardo la nota
+                  console.log("el id de celda es",id, "La nota es ",nota);
+                  if(id!=0){                   //controlo que no este vacio el id
+                    console.log("entro al if");
+                    $(id).val(nota);              //seteo la celda con la nota correspondiente
+                  }
+                })
+                //console.log(id_notas);
+                todasNotas.push(id_notas);          //guardo todas las notas disponibles del alumno en un arreglo
+              })
+              /////////////////////////////////////////
+          }//if que ve si hay notas en la coleccion alumno*/
       coleccion_alumno.push(alumno);
+      //console.log("Id's Notas",idNotas);
+      //console.log("Id's Notas 2",todasNotas);
+
     })
+
     coleccion_alumno.sort(function(a, b) { //funcion que ordena los datos por apellido
       if (a.surname > b.surname) {
         return 1;
@@ -44,7 +79,11 @@ Template.tablaAlumno.helpers({
       // a must be equal to b
       return 0;
     });
+    //////////////////////////////////////////////
+
+    //////////////////////////////////////////////
     console.log("colecion alumnos", coleccion_alumno);
+
     ///////////////////////////////////////////////////////////////
     return coleccion_alumno;
   }

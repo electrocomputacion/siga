@@ -4,6 +4,7 @@ import { Projects, ProjectsIndex } from '../lib/collections/projects';
 import { Alumno } from '../lib/collections/alumno';
 import { Tutor } from '../lib/collections/tutor';
 import { Curso } from '../lib/collections/curso';
+import { Notas } from '../lib/collections/notas';
 import { RelAlumnCurso } from '../lib/collections/relalumncurso';
 
 Router.onBeforeAction(function(){		//Controla que no se pueda ingresar si no se esta logeado
@@ -30,6 +31,7 @@ Router.configure({
 					function() { return Meteor.subscribe('curso'); },
 					function() { return Meteor.subscribe('relalumncurso'); },
 					function () { return Meteor.subscribe("roles");	},
+					function () { return Meteor.subscribe("notas");	},
 
 			 	];
 	},
