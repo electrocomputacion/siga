@@ -1,6 +1,6 @@
 <template name="tablaAlumno">
-
-  <table class="table table-bordered table-responsive">
+{{#if alumnos}}
+  <table class="table table-bordered table-responsive" id="tabla">
     <thead>
       <tr>
         <th scope="col" colspan="18">Curso:</th>
@@ -38,33 +38,33 @@
   </thead>
       {{#each alumnos}}
       <tr>
-        <td>
+        <td  id="prueba">
           {{dni}}
         </td>
-      <td Style="font-size:80%">
+      <td Style="font-size:80%" id='td'>
         {{surname}},  {{name}}
       </td>
       <td scope="col"><input type="text" class="form-control-plaintext" id="t1sn1s{{dni}}"></td>
       <td scope="col"><input type="text" class="form-control-plaintext" id="t1sn2s{{dni}}"></td>
       <td scope="col"><input type="text" class="form-control-plaintext" id="t1sn3s{{dni}}"></td>
       <td scope="col"><input type="text" class="form-control-plaintext" id="t1sn4s{{dni}}"></td>
-      <th scope="col"></th>
+      <th scope="col"><p id="1trim"></p></th>
       <td scope="col"><input type="text" class="form-control-plaintext" id="t2sn1s{{dni}}"></td>
       <td scope="col"><input type="text" class="form-control-plaintext" id="t2sn2s{{dni}}"></td>
       <td scope="col"><input type="text" class="form-control-plaintext" id="t2sn3s{{dni}}"></td>
       <td scope="col"><input type="text" class="form-control-plaintext" id="t2sn4s{{dni}}"></td>
-      <th scope="col"></th>
+      <th scope="col"><p id="2trim"></p></th>
       <td scope="col"><input type="text" class="form-control-plaintext" id="t3sn1s{{dni}}"></td>
       <td scope="col"><input type="text" class="form-control-plaintext" id="t3sn2s{{dni}}"></td>
       <td scope="col"><input type="text" class="form-control-plaintext" id="t3sn3s{{dni}}"></td>
       <td scope="col"><input type="text" class="form-control-plaintext" id="t3sn4s{{dni}}"></td>
-      <th scope="col"></th>
+      <th scope="col"><p id="3trim"></p></th>
       <th scope="col"><input type="text" class="form-control-plaintext"></th>
 
       </tr>
       {{/each}}
-
-
-
 </table>
+
+{{/if}}
+<input type="text" id="input" value="{{dni}}">
 </template>
