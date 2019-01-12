@@ -16,6 +16,16 @@ Notas.attachSchema(new SimpleSchema({
     label:"idTabla",
     optional:false,
   },
+  trimestre:{           //trimestre al que corresponde la nota
+    type:String,
+    label:"trimestre",
+    optional:false,
+  },
+  orden:{               //numero de orden 1,2,3,4
+    type:String,
+    label:"orden",
+    optional:false,
+  },
 owner:{
  type: String,
  label: "Propietario",
