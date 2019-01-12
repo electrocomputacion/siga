@@ -22,8 +22,8 @@ Template.alumnoForm.events({
      tutor=Tutor.findOne({"dni":dni_tutor});
      //console.log(tutor._id);
      newAlumno.tutores=tutor._id;
-     //console.log(tutores);
-     //console.log(newAlumno);
+     console.log(tutor);
+     console.log(newAlumno);
      let cuenta=Alumno.find({"dni":newAlumno.dni}).count();
      let form=Session.get("formulario");
      let loggedInUser=Meteor.user();

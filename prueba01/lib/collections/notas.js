@@ -7,7 +7,7 @@ SimpleSchema.extendOptions(['autoform']);
 export const Notas = new Mongo.Collection('notas');
 Notas.attachSchema(new SimpleSchema({
   nota:{
-    type:String,
+    type:Number,
     label:"nota",
     optional:false,
   },
@@ -17,12 +17,12 @@ Notas.attachSchema(new SimpleSchema({
     optional:false,
   },
   trimestre:{           //trimestre al que corresponde la nota
-    type:String,
+    type:Number,
     label:"trimestre",
     optional:false,
   },
   orden:{               //numero de orden 1,2,3,4
-    type:String,
+    type:Number,
     label:"orden",
     optional:false,
   },

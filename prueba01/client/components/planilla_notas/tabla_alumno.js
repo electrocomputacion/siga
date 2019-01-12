@@ -24,13 +24,13 @@ Template.tablaAlumno.helpers({
       "ciclo": "cs"
     });
     var idCurso = curso._id;
-    //console.log(idCurso);
+    console.log(idCurso);
     ////CONSULTA///////////////////////////////////////////////////
     var coleccion_alumno = [];
     var curso_alumno = RelAlumnCurso.find({
       curso: idCurso,
     }).fetch();
-    //console.log("curso_alumno",curso_alumno);
+    console.log("curso_alumno",curso_alumno);
     curso_alumno.forEach(function(d) {
       var alumno = Alumno.findOne({
         "_id": d.alumno
@@ -44,7 +44,7 @@ Template.tablaAlumno.helpers({
       newAlumno.trim1 = notaslocas.trim1;
       newAlumno.trim2 = notaslocas.trim2;
       newAlumno.trim3 = notaslocas.trim3;
-      //console.log("Alumno",newAlumno);
+      console.log("Alumno",newAlumno);
       coleccion_alumno.push(newAlumno);
     })
     coleccion_alumno.sort(function(a, b) { //funcion que ordena los datos por apellido
@@ -75,7 +75,7 @@ Template.tablaAlumno.events({
       Template.instance().viejoId.set(id1);
     }
     else {
-      var datos = viejoId.split('s');
+      var datos = viejoId.split('s'); //en datos se desglosan los datos de la celda 0:trimestre, 1:orden, 2:dni
       var dni_alumno = datos[2];
       console.log("dni del alumno", dni_alumno);
       var selector = '#' + viejoId;
@@ -92,7 +92,13 @@ Template.tablaAlumno.events({
           nota: nota,
           id_materia: materia,
           idTabla: viejoId,
+          trimestre:datos[0],
+          orden:datos[1],
         })
+        Alumno.update({_id:idAlumno}, {$push:{
+          id_notas:idNota,
+        }});
+
       } //fin del if nota
     }
     console.log("Nuevoid", nuevoId);
@@ -112,10 +118,23 @@ function notas(datos) {
   idNotas = datos.id_notas;
   let dni = datos.dni;
   console.log("Se llamo a la funcion para el DNI", dni);
+  console.log("idnotas",idNotas);
   let trim1 = [];
   let trim2 = [];
   let trim3 = [];
-  if (idNotas.length != 0) {
+  let control=0;
+  console.log("solo probando");
+  if(idNotas==undefined){
+    console.log("dentro if undefined")
+    control=0;
+  }
+  else{
+    control=idNotas.length;
+    console.log("dentro del else", control)
+  }
+  console.log("control",control);
+  if (control!=0) {
+    console.log("al if");
     let todasNotas = [];
     idNotas.forEach(function(e) { //funcion que itera sobre todas las notas disponibles
       var id_notas = Notas.findOne({ //consulto las notas existentes del alumno y de la materia correspondiente
@@ -174,6 +193,7 @@ function notas(datos) {
     }
   } //if que ve si hay notas en la coleccion alumno
   if ((trim1.length < 4) || (trim2.length < 4) || (trim3.length < 4)) {
+    console.log("al if de relleno");
     let k = 0;
     let t1 = trim1.length;
     let t2 = trim2.length;

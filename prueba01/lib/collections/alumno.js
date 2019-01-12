@@ -41,7 +41,7 @@ Alumno.attachSchema(new SimpleSchema({
   optional: false,
  },
  legajo: {
-  type: Number,
+  type: String,
   label: 'Legajo',
   optional: true,
 
