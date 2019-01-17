@@ -44,6 +44,7 @@ Template.tablaAlumno.helpers({
       newAlumno.trim1 = notaslocas.trim1;
       newAlumno.trim2 = notaslocas.trim2;
       newAlumno.trim3 = notaslocas.trim3;
+      newAlumno.promFin = notaslocas.promFin;
       console.log("Alumno",newAlumno);
       coleccion_alumno.push(newAlumno);
     })
@@ -168,8 +169,9 @@ function notas(datos) {
     let t1 = trim1.length;
     let t2 = trim2.length;
     let t3 = trim3.length;
+    ////////calculo promedio T1////////////////////
     if (t1 != 0) {
-      for (i; i < t1;) {
+      for (i=0; i < t1;) {
         console.log("i", i);
         let act = trim1[i].nota;
         p1 = p1 + act;
@@ -182,6 +184,39 @@ function notas(datos) {
       p1 = null;
       console.log("prom1", p1);
     }
+    //////////////////////////////////////////////
+    ////////calculo promedio T2////////////////////
+    if (t2 != 0) {
+      for (i=0; i < t2;) {
+        console.log("i", i);
+        let act = trim2[i].nota;
+        p2 = p2 + act;
+        i++;
+      }
+      p2 = p2 / t2;
+      console.log("prom1", p2);
+    }
+    else {
+      p2 = null;
+      console.log("prom1", p2);
+    }
+    //////////////////////////////////////////////
+    ////////calculo promedio T3////////////////////
+    if (t3 != 0) {
+      for (i=0; i < t3;) {
+        console.log("i", i);
+        let act = trim3[i].nota;
+        p3 = p3 + act;
+        i++;
+      }
+      p3 = p3 / t3;
+      console.log("prom1", p3);
+    }
+    else {
+      p3 = null;
+      console.log("prom1", p3);
+    }
+    //////////////////////////////////////////////
     var prom1 = {
       prom1: p1,
     }
@@ -226,13 +261,30 @@ function notas(datos) {
   trim1.push(prom1);
   trim2.push(prom2);
   trim3.push(prom3);
+  if((p1>0)&&(p2>0)&&(p3>0)){
+    var promFin=p1+p2+p3;
+    promFin=promFin/3;
+    promFin=toFixedTrunc(promFin, 2);
+  }
+  else{
+    var promFin=null;
+  }
   let soloNotas = {
     trim1: trim1,
     trim2: trim2,
     trim3: trim3,
+    promFin:promFin,
   };
   console.log("Solo notas", soloNotas);
   return soloNotas;
 
 }
 //////////////////////////fin fe funcion datos//////////////////////////////////
+function toFixedTrunc(value, n) {
+  const v = value.toString().split('.');
+  if (n <= 0) return v[0];
+  let f = v[1] || '';
+  if (f.length > n) return `${v[0]}.${f.substr(0,n)}`;
+  while (f.length < n) f += '0';
+  return `${v[0]}.${f}`
+}

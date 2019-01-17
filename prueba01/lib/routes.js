@@ -130,5 +130,17 @@ Router.route('/materiaForm',{
 
 })
 Router.route('/tablaAlumno',{
-	name: 'tablaAlumno',
+	//name: 'tablaAlumno',
+	loadingTemplate: 'loading',
+	waitOn: function(){
+											return [
+												function() { return Meteor.subscribe('alumno'); },
+												function() { return Meteor.subscribe('relalumncurso'); },
+												function () { return Meteor.subscribe('notas');	},
+												function() { return Meteor.subscribe('curso'); },
+											]
+	},
+	action: function(){
+		this.render('tablaAlumno');
+	},
 })

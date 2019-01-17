@@ -1,5 +1,5 @@
 <template name="tablaAlumno">
-  {{#if alumnos}}
+  <!--{{#if alumnos}}-->
     <table class="table table-bordered table-responsive" id="tabla">
       <thead>
         <tr>
@@ -78,7 +78,7 @@
           {{/if}}
           {{#if trim1.[4].prom1}}
             <td scope="col">
-              <p id="prom1">{{trim1.[4].prom1}}</p>
+              <p id="prom1"><b>{{trim1.[4].prom1}}</b></p>
             </td>
           {{else}}
             <td scope="col">
@@ -115,7 +115,7 @@
           {{/if}}
           {{#if trim2.[4].prom2}}
             <td scope="col">
-              <p id="prom1">{{trim2.[4].prom2}}</p>
+              <p id="prom1"><b>{{trim2.[4].prom2}}</b></p>
             </td>
           {{else}}
             <td scope="col">
@@ -151,13 +151,22 @@
           {{else}}
             <td scope="col"><input type="text" class="form-control-plaintext" id="{{trim3.[3].idTabla}}"></td>
           {{/if}}
-          {{#if trim3.[4].prom2}}
+          {{#if trim3.[4].prom3}}
             <td scope="col">
-              <p id="prom3">{{trim3.[4].prom3}}</p>
+              <p id="prom3"><b>{{trim3.[4].prom3}}</b></p>
             </td>
           {{else}}
             <td scope="col">
               <p id="trim3"></p>
+            </td>
+          {{/if}}
+          {{#if promFin}}
+            <td scope="col">
+              <p id="promFin"><b>{{promFin}}</b></p>
+            </td>
+          {{else}}
+            <td scope="col">
+              <p id="promFin"></p>
             </td>
           {{/if}}
   <!--    {{#each trim1}}
@@ -210,5 +219,5 @@
       {{/each}}
 </table>
 
-{{/if}}
+<!--{{/if}}-->
 </template>
