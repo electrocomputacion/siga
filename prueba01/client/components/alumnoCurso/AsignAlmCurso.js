@@ -17,7 +17,7 @@ Template.AsignAlmCurso.helpers({
   alumno: function() {
     return Alumno.find().fetch().map(
       function(it) {
-        console.log("esto es el it", it);
+        //console.log("esto es el it", it);
         var prueba = it.dni + " " + it.surname + " " + it.name;
         return prueba;
         //return it.dni;
@@ -32,21 +32,21 @@ Template.AsignAlmCurso.events({
     newRelacion.curso = target.curso.value;
     var input_dni = target.dni_alumno.value.split(" ");
     newRelacion.alumno = input_dni[0]; //tomo solo el dni del input para hacer la consulta
-    console.log("dni alumno", newRelacion.alumno);
+    //console.log("dni alumno", newRelacion.alumno);
     //newRelacion.alumno=target.dni_alumno.value;
     newRelacion.fecha = target.fecha.value;
     let alumno = Alumno.find({
       "dni": newRelacion.alumno
     }).count();
-    console.log("cuenta", alumno);
+    //console.log("cuenta", alumno);
     ////////////////////////////////////
     if (alumno) {
       let idAlumno = Alumno.findOne({
         "dni": newRelacion.alumno
       });
       newRelacion.id = idAlumno._id; //guardo el id del alumno a asignar
-      console.log("objeto alumno", idAlumno);
-      console.log("id del alumno", newRelacion.id);
+    //  console.log("objeto alumno", idAlumno);
+    //  console.log("id del alumno", newRelacion.id);
       RelAlumnCurso.insert({
         alumno: newRelacion.id,
         curso: newRelacion.curso,

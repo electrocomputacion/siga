@@ -87,7 +87,8 @@ Router.route('/profile',{												//esto define la ruta al profile del usuari
 	}
 })
 Router.route('/crearUser',function(){
-	var user=this.userId;
+	//var user=this.userId;
+	let user=Meteor.userId();
 	var usuario=Roles.userIsInRole(user,['admin']);
 	if(usuario){
 		this.render('crearUser')
@@ -142,5 +143,42 @@ Router.route('/tablaAlumno',{
 	},
 	action: function(){
 		this.render('tablaAlumno');
+	},
+})
+Router.route('/materiaDocente',{
+	loadingTemplate:'loading',
+	waitOn: function(){
+											return[
+												function(){return Meteor.subscribe('materia');},
+												function(){return Meteor.subscribe('docentes')},
+												function(){return Meteor.subscribe('curso')},
+											]
+	},
+	data: {		//data es un objeto que contendra los datos que queremos obtener de proyectos en el template
+		materia(){											//contiene todas las materias
+				let materia=Materia.find({});
+			}
+	},
+	action: function(){
+		this.render('materiadocente');
+	},
+})
+
+Router.route('/prueba',{
+	loadingTemplate:'loading',
+	waitOn: function(){
+											return[
+												function(){return Meteor.subscribe('materia');},
+												function(){return Meteor.subscribe('docentes')},
+											]
+	},
+	data: {		//data es un objeto que contendra los datos que queremos obtener de proyectos en el template
+		usuarios(){											//contiene todas las materias
+				let usuarios=Meteor.users.find({});
+				return usuarios;
+		}
+	},
+	action: function(){
+		this.render('prueba');
 	},
 })

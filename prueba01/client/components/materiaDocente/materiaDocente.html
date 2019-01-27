@@ -1,0 +1,39 @@
+<template name="materiadocente">
+  <div class="row">
+  	<div class="col s12">
+  <h2>Asignar una Materia a un Docente</h2>
+  	<!--//////////////////////////////////////////////////////-->
+          <form class="form" id="asignMateriaDocente">
+  				<div class="modal-body">
+  						<div class="panel panel-warning">
+  			<div class="panel-body">
+  					  	<div class="form-group col-md-12">
+  						          <label for="usr">Materia</label>
+                        <input class="form-control typeahead" id="id_materia" type="text"
+                 placeholder="Nombre de la materia"
+                 autocomplete="off" spellcheck="off"
+                 data-source="data"/>
+  						  </div>
+  							<div class="form-group col-md-12">
+  							  <label for="usr">Fecha de Asignación</label>
+  							  <input type="date" class="form-control form-control-lg" id="fecha" >
+  							</div>
+  <!--						<div class="form-group col-md-12">
+  						<label for="usr">Alumno</label>
+              <input class="form-control typeahead" id="dni_alumno" type="text"
+       placeholder="DNI del Alumno a Asignar"
+       autocomplete="off" spellcheck="off"
+       data-source="alumno"/>
+  					</div> -->
+  			</div>
+  </div>
+  <div class="modal-footer">
+  <button type="submit" id="submit" class="btn btn-success">Guardar</button>
+  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+  </div>
+  </div>
+  </form>
+  </div>
+  </div>
+
+  </template>

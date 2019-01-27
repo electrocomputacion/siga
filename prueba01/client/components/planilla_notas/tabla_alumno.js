@@ -178,6 +178,7 @@ function notas(datos) {
         i++;
       }
       p1 = p1 / t1;
+      p1 =Math.round(p1/0.5)*0.5;
       console.log("prom1", p1);
     }
     else {
@@ -194,6 +195,7 @@ function notas(datos) {
         i++;
       }
       p2 = p2 / t2;
+      p2 =Math.round(p2/0.5)*0.5;
       console.log("prom1", p2);
     }
     else {
@@ -210,6 +212,7 @@ function notas(datos) {
         i++;
       }
       p3 = p3 / t3;
+      p3 =Math.round(p3/0.5)*0.5;
       console.log("prom1", p3);
     }
     else {

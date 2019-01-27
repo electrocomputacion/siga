@@ -16,7 +16,7 @@ nombre: {
 codigo:{
   type: String,
   label: 'Código',
-  optional: false,
+  optional: true,
 },
 owner:{
  type: String,
