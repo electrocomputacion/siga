@@ -1,45 +1,57 @@
 <template name="baseLayout">
+  <nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar" style="background-color: #563d7c;">
+    <a class="navbar-brand" href="#">
+      <img src="/images/logo4.png" width="36" height="36" alt=""></a>
+    <a class="navbar-brand" href="{{ pathFor 'home'}}">S.I.G.A</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      {{#if currentUser}}
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Lista de Acciones</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              {{#if isInRole 'admin'}}
+                <a class="dropdown-item" href="{{ pathFor 'alumnoForm'}}">Cargar Alumno</a>
+                <a class="dropdown-item" href="{{ pathFor 'tutor_form'}}">Nuevo Tutor</a>
+                <a class="dropdown-item" href="{{ pathFor 'cursos_form'}}">Nuevo Curso</a>
+                <a class="dropdown-item" href="{{ pathFor 'materiaForm'}}">Nueva Materia</a>
+                <a class="dropdown-item" href="{{ pathFor 'materiaDocente'}}">Asignar Materia</a>
+                <a class="dropdown-item" href="{{ pathFor 'tablaAlumno'}}">Planillas</a>
+              {{/if}}
+              {{#if isInRole 'docente'}}
+                <a class="dropdown-item" href="{{ pathFor 'tablaAlumno'}}">Planillas</a>
+              {{/if}}
+              {{#if isInRole 'secretario'}}
+                <a class="dropdown-item" href="{{ pathFor 'alumnoForm'}}">Cargar Alumno</a>
+                <a class="dropdown-item" href="{{ pathFor 'tutor_form'}}">Nuevo Tutor</a>
+                <a class="dropdown-item" href="{{ pathFor 'cursos_form'}}">Nuevo Curso</a>
+                <a class="dropdown-item" href="{{ pathFor 'materiaForm'}}">Nueva Materia</a>
+                <a class="dropdown-item" href="{{ pathFor 'materiaDocente'}}">Asignar Materia</a>
+              {{/if}}
+            </div>
+          </li>
+        </ul>
+
+      {{/if}}
+      </div>
 
 
-<nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar" style="background-color: #563d7c;">
-  <a class="navbar-brand" href="#">
-    <img src="/images/logo4.png" width="36" height="36" alt="">
-  </a>
-  <a class="navbar-brand" href="{{ pathFor 'alumnoForm'}}">S.I.G.A</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+        {{#if currentUser}}
+        <a id="logout" href="#" style="color: #ffffff;">Salir</a>
+        {{else}}
+        <a id="vacio" href="#" style="color: #ffffff;"> </a>
+        {{/if}}
+        </li>
+      </ul>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Lista de Acciones
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          {{#if isInRole 'admin'}}
-          <a class="dropdown-item" href="{{ pathFor 'alumnoForm'}}">Cargar Alumno</a>
-          <a class="dropdown-item" href="{{ pathFor 'tutor_form'}}">Nuevo Tutor</a>
-          <a class="dropdown-item" href="{{ pathFor 'cursos_form'}}">Nuevo Curso</a>
-          <a class="dropdown-item" href="{{ pathFor 'materiaForm'}}">Nueva Materia</a>
-          <a class="dropdown-item" href="{{ pathFor 'materiaDocente'}}">Asignar Materia</a>
-          <a class="dropdown-item" href="{{ pathFor 'tablaAlumno'}}">Planillas</a>
-          {{/if}}
-        </div>
-      </li>
-
-    </ul>
-    <ul class="ml-auto">
-      {{> loginButtons}}
-    </ul>
+  </nav>
+  <div class="container">
+    {{#momentum plugin="growl"}}
+      {{#if Template.subscriptionsReady}}
+        {{>yield}}
+      {{/if}}
+    {{/momentum}}
   </div>
-</nav>
-<div class="container">
-  {{#momentum plugin="growl"}}
-    {{#if Template.subscriptionsReady}}
-      {{>yield}}
-    {{/if}}
-  {{/momentum}}
-</div>
 </template>

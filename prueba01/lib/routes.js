@@ -15,7 +15,7 @@ Router.onBeforeAction(function(){		//Controla que no se pueda ingresar si no se 
 	else {
 		if(Router.current().route.getName()==='home'){	//si la ruta actual es home y el usuario ya esta logeado, lo saca de la pagina de loggin y lo lleva a proyectos
 
-			Router.go('projects');
+			Router.go('profile');
 		}
 		this.next();
 	}
@@ -181,4 +181,7 @@ Router.route('/prueba',{
 	action: function(){
 		this.render('prueba');
 	},
+})
+Router.route('/login',{
+	name: 'login',
 })

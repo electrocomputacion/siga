@@ -1,7 +1,36 @@
 <template name="home">
-	<div class="col-12">
-		<hr />
-		<img src="/images/Hongo1.png"/>
-
+<div class="container">
+	<div class="col-3 mx-auto">
+		<img src="/images/Hongo1.png" />
 	</div>
-	</template>
+
+</div>
+	<div class="container">
+
+		<div class="col-3 mx-auto">
+
+		<div class="row justify-content-start">
+
+			<div id="login-dropdown-list" class="accounts-dialog">
+				<form class="login-form login-password-form" id="login">
+					<div id="login-email-label-and-input">
+						<label id="login-email-label" for="login-email">
+							Email
+						</label>
+						<input id="loginEmail" type="email">
+					</div>
+					<div id="login-password-label-and-input">
+						<label id="login-password-label" for="login-password">
+							Contraseña
+						</label>
+						<input id="loginPassword" type="password">
+					</div>
+					<button type="submit" class="login-button login-button-form-submit" id="login">
+						Ingresar
+					</button>
+				</form>
+			</div>
+		</div>
+		</div>
+	</div>
+</template>
