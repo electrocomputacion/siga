@@ -37,9 +37,14 @@ RelMatDocente.attachSchema(new SimpleSchema({
     type: "hidden"
    }
   },
-  estado:{              //situacion de revista en el cargo
+  estado:{              //estado actual, licencia, activo, renuncia, etc
     type: String,
     label: 'estado',
+    optional: false,
+  },
+  revista:{
+    type: String,
+    label: 'revista',
     optional: false,
   }
 }));

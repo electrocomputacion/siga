@@ -6,6 +6,7 @@ import {Alumno} from '../lib/collections/alumno';
 import {Notas} from '../lib/collections/notas';
 import {RelAlumnCurso} from '../lib/collections/relalumncurso';
 import {Materia} from '../lib/collections/materia';
+import{ RelMatDocente } from '../lib/collections/relmatdocente'
 //var usuario=Meteor.userId();
 
 Meteor.publish('projects', function projectsPublication()

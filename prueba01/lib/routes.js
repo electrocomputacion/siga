@@ -152,11 +152,13 @@ Router.route('/materiaDocente',{
 												function(){return Meteor.subscribe('materia');},
 												function(){return Meteor.subscribe('docentes')},
 												function(){return Meteor.subscribe('curso')},
+												function(){return Meteor.subscribe('relmatdocente')},
 											]
 	},
 	data: {		//data es un objeto que contendra los datos que queremos obtener de proyectos en el template
-		materia(){											//contiene todas las materias
-				let materia=Materia.find({});
+		docente(){											//contiene todas las materias
+			let usuarios=Meteor.users.find({});
+			return usuarios;
 			}
 	},
 	action: function(){
