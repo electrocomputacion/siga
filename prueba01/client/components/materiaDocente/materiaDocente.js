@@ -47,6 +47,7 @@ Template.materiadocente.events({
           var dato_docente = target.id_docente.value;
           var fecha_inicio = target.fecha_inicio.value;
           var revista = target.revista.value;
+          var estado = target.estado.value;
           //console.log("Datos",dato_materia);
           //console.log("target",target);
           var prueba=dato_materia;
@@ -77,18 +78,22 @@ Template.materiadocente.events({
             "profile.dni":dni_docente,
           });
 
-        let relacion = RelMatDocente.find({       //verifico que no exista la relacion entre el docente
+        let cuenta = RelMatDocente.find({       //verifico que no exista la relacion entre el docente
           "id_materia": materia._id,              // y la materia a asignar
           "id_docente": docente._id,
+          "estado":"activo",                      //verifico el estado de los docentes asigandos para que no haya mas de uno activo
         }).count();
         let relacion2 = RelMatDocente.find({      //verifico si existe alguien asignado a esa materia
           "id_materia":materia._id,
-        });
+          "estado":"activo",
+        }).fetch();
 console.log("Materia", materia._id);
 console.log("Docente", docente._id);
 console.log("Relacion", relacion);
+console.log("Relacion completa", relacion2)
 //console.log("Relacion 2", relacion2);
- if(relacion<=0){
+ if(cuenta<=0){
+   if(relacion2!=undefined){
    if(confirm("Asignar a"+" "+docente.profile.surname+" "+docente.profile.name+" a la materia"+" "+prueba)){
    console.log("confirmado");
    let id_relacion = RelMatDocente.insert({
@@ -96,14 +101,21 @@ console.log("Relacion", relacion);
         "id_docente":docente._id,
         "fecha_inicio":fecha_inicio,
         "revista":revista,
-        "estado":"activo",
+        "estado":estado,
    });
  }
    $('#asignMateriaDocente')[0].reset();
  }
+ if(confirm("Ya existe un docente activo asignado a esa materia, desea actualizar los datos?")){
+   //mostrar modal de lista de docentes
+ }
  else{
-
-   if(confirm("Ya existe un docente asignado a esa materia")){
+   alert("No se realizaron cambios");
+   ('#asignMateriaDocente')[0].reset();
+ }
+}
+ else{
+   if(confirm("El docente ya se encuentra asigando como activo en la materia")){
      console.log("confirmado");
    }
  }

@@ -1,0 +1,77 @@
+<template name="baseLayout">
+  <nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar" style="background-color: #563d7c;">
+    <a class="navbar-brand" href="#">
+      <img src="/images/logo4.png" width="36" height="36" alt=""></a>
+    <a class="navbar-brand" href="{{ pathFor 'home'}}">S.I.G.A</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      {{#if currentUser}}
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Lista de Acciones</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              {{#if isInRole 'admin'}}
+                <a class="dropdown-item" href="{{ pathFor 'alumnoForm'}}">Cargar Alumno</a>
+                <a class="dropdown-item" href="{{ pathFor 'tutor_form'}}">Nuevo Tutor</a>
+                <a class="dropdown-item" href="{{ pathFor 'cursos_form'}}">Nuevo Curso</a>
+                <a class="dropdown-item" href="{{ pathFor 'materiaForm'}}">Nueva Materia</a>
+                <a class="dropdown-item" href="{{ pathFor 'materiaDocente'}}">Asignar Materia</a>
+                <a class="dropdown-item" href="{{ pathFor 'tablaAlumno'}}">Planillas</a>
+              {{/if}}
+              {{#if isInRole 'docente'}}
+                <a class="dropdown-item" href="{{ pathFor 'tablaAlumno'}}">Planillas</a>
+              {{/if}}
+              {{#if isInRole 'secretario'}}
+                <a class="dropdown-item" href="{{ pathFor 'alumnoForm'}}">Cargar Alumno</a>
+                <a class="dropdown-item" href="{{ pathFor 'tutor_form'}}">Nuevo Tutor</a>
+                <a class="dropdown-item" href="{{ pathFor 'cursos_form'}}">Nuevo Curso</a>
+                <a class="dropdown-item" href="{{ pathFor 'materiaForm'}}">Nueva Materia</a>
+                <a class="dropdown-item" href="{{ pathFor 'materiaDocente'}}">Asignar Materia</a>
+              {{/if}}
+            </div>
+          </li>
+        </ul>
+
+      {{/if}}
+      </div>
+
+
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+        <a class="nav-link" href="{{ pathFor 'profile'}}">{{currentUser.profile.surname}} {{currentUser.profile.name}}</a>
+        </li>
+        <li class="nav-item">
+        {{#if currentUser}}
+              <a class="nav-link" id="logout" href="#" >  Salir</a>
+        {{else}}
+        <a class="nav-link" id="vacio" href="#" style="color: #ffffff;"> </a>
+        {{/if}}
+        </li>
+      </ul>
+
+  </nav>
+  <!-- A vertical navbar -->
+<nav class="navbar bg-light">
+
+ <!-- Links -->
+ <ul class="navbar-nav">
+   <li class="nav-item">
+     <a class="nav-link" href="#">Link 1</a>
+   </li>
+   <li class="nav-item">
+     <a class="nav-link" href="#">Link 2</a>
+   </li>
+   <li class="nav-item">
+     <a class="nav-link" href="#">Link 3</a>
+   </li>
+ </ul>
+
+</nav> 
+  <div class="container">
+    {{#momentum plugin="growl"}}
+      {{#if Template.subscriptionsReady}}
+        {{>yield}}
+      {{/if}}
+    {{/momentum}}
+  </div>
+</template>
