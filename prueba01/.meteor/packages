@@ -38,3 +38,5 @@ alanning:roles
 bigdsk:inputmask
 mizzao:autocomplete
 sergeyt:typeahead
+momentjs:moment
+remcoder:chronos

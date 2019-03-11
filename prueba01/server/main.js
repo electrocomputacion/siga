@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+
 //import {Session} from 'meteor/session';
 /*Meteor.methods({
 
@@ -18,6 +19,7 @@ import { Meteor } from 'meteor/meteor';
    }  //fin de la funcion
 });*/
 Meteor.startup(() => {
+
 ///////////////////////////////////////////////
   //Inicializo las variables de seción
   //Session.set("dni",0);
