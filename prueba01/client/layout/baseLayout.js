@@ -23,9 +23,9 @@ Template.baseLayout.events({
 Template.baseLayout.helpers({
   currentTime: function() {
   let i =  moment.locale('es');
-    console.log("lenguaje",i)
+    //console.log("lenguaje",i)
     var tiempo=new Chronos.date();
-    console.log(tiempo)
+    //console.log(tiempo)
     let hora = tiempo.getHours();
     let minuto = tiempo.getMinutes();
     let segundo = tiempo.getSeconds();
@@ -39,7 +39,7 @@ Template.baseLayout.helpers({
       hora='0'+hora;
     }
     var hora_lista = hora+':'+minuto+':'+segundo;
-    console.log(hora_lista);
+  //  console.log(hora_lista);
     return hora_lista;
     //Template.registerHelper("", function(argument){
   }

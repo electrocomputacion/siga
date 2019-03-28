@@ -48,6 +48,7 @@
         <div class="sidebar-heading text-center font-weight-bold font-italic" style="background-color: #848484;">MENU </div>
         <div class="list-group ">
           {{#if isInRole 'admin'}}
+          <a class="list-group-item list-group-item-action list-group-item-primary " href="{{ pathFor 'crearUser'}}">Nuevo Usuario</a>
             <a class="list-group-item list-group-item-action list-group-item-primary " href="{{ pathFor 'alumnoForm'}}">Cargar Alumno</a>
             <a class="list-group-item list-group-item-action list-group-item-primary " href="{{ pathFor 'tutor_form'}}">Nuevo Tutor</a>
             <a class="list-group-item list-group-item-action list-group-item-primary " href="{{ pathFor 'cursos_form'}}">Nuevo Curso</a>

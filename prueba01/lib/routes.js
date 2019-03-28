@@ -55,7 +55,10 @@ Router.route('/projects',{
 Router.route('/projects_form',{
 	name:'projects_form'
 })
-
+Router.route('/doc_mat_tabla',{
+	waitOn: function(){return Meteor.subscribe('relmatdocente')},
+	name:'doc_mat_tabla',
+})
 Router.route('/projects/:_id', function(){
 	let project = Projects.findOne({_id: this.params._id})
 		if (!project){
