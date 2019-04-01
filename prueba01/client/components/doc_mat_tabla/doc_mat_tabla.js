@@ -10,12 +10,14 @@ Template.docMatTabla.helpers({
   doc_mat: function(){
     var datos={};
     var array=[];
-    let id_materia = Session.get("id_materia");
+    //let id_materia = Session.get("id_materia");
+    let id_materia = "r758HxMw47nQrdKr6";
     //id_materia=String(id_materia);
     console.log("id_materia",id_materia);
     let relacion = RelMatDocente.find({ //verifico si existe alguien asignado a esa materia
       "id_materia": id_materia,
     }).fetch();
+    console.log("Relacion materias",relacion)
       relacion.forEach(function(e) {
         let materia = Materia.findOne({
           "_id":e.id_materia,
@@ -27,12 +29,25 @@ Template.docMatTabla.helpers({
         console.log("USUARIO",usuario);
         datos.nombre=usuario.profile.name;
         datos.apellido=usuario.profile.surname;
-        datos.materia=materia.nombre;
+        datos.dni=usuario.profile.dni;
+        datos.estado=e.estado;
         //datos.id_curso;
         array.push(datos);
         console.log("DATOS",datos);
       }) //fin foreach relacion
       console.log("Arreglo",array);
       return array
+  },
+  materia: function(){
+    //let id_materia = Session.get("id_materia");
+    let id_materia = "r758HxMw47nQrdKr6";
+    let materia = Materia.findOne({
+      "_id":id_materia,
+    })
+    let curso =  Curso.findOne({
+      "_id": materia.id_curso,
+    })
+    let nom_completo= materia.nombre+" "+"Curso:"+" "+curso.año+"°"+" "+curso.division+"°"+" Turno:"+" "+curso.turno+" "+curso.ciclo;
+    return (nom_completo);
   }
-});
+})

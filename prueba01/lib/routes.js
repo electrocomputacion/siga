@@ -56,7 +56,15 @@ Router.route('/projects_form',{
 	name:'projects_form'
 })
 Router.route('/doc_mat_tabla',{
-	waitOn: function(){return Meteor.subscribe('relmatdocente')},
+	waitOn: function(){
+											return[
+												function () { return Meteor.subscribe("relmatdocente");	},
+												function () { return Meteor.subscribe("materia"); },
+												function () { return Meteor.subscribe("curso"); },
+												function () { return Meteor.subscribe("users"); },
+											];
+										},
+
 	name:'doc_mat_tabla',
 })
 Router.route('/projects/:_id', function(){

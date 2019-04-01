@@ -57,8 +57,8 @@ Meteor.publish('materia', function materiaPublication(){
 	return Materia.find({});
 });
 //}
-/*Meteor.publish('users', function alumnoPublication()
+Meteor.publish('users', function usersPublication()
 {
 	// userId nos la da account ui..
-	return Meteor.users.find();		//publicacion en el servidor
-});*/
+	return Meteor.users.find({});		//publicacion en el servidor
+});

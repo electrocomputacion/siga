@@ -1,10 +1,27 @@
 <template name="docMatTabla">
-  <p>
-    al template!!!!
 
-    {{#each doc_mat}}
-      {{nombre}}  {{apellido}}  {{materia}}
+<table class="table table-bordered table-responsive" id="tabla">
+  <thead>
+    <tr>
+      <th scope="col" colspan="18">Listado Docentes Asignados a la Materia {{materia}}</th>
+    </tr>
+  </thead>
 
+
+  {{#each doc_mat}}
+  <tr>
+
+    <td>
+
+      {{dni}} {{nombre}} {{apellido}}
+    </td>
+    <td>
+      {{estado}}
+    </td>
+    <td>
+      <a href="{{pathFor 'actualizar_est_doc'}}">actualizar</a>
+    </td>
+    </tr>
     {{/each}}
-  </p>
+  </table>
 </template>
