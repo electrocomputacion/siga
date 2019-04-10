@@ -198,3 +198,14 @@ Router.route('/prueba',{
 Router.route('/login',{
 	name: 'login',
 })
+Router.route('/misMaterias',{
+	waitOn: function(){
+											return[
+												function(){return Meteor.subscribe('materia');},
+												function(){return Meteor.subscribe('docentes')},
+												function(){return Meteor.subscribe('curso')},
+												function(){return Meteor.subscribe('relmatdocente')},
+											]
+	},
+	name: 'misMaterias',
+})

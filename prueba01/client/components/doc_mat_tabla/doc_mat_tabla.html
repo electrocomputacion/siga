@@ -1,27 +1,37 @@
 <template name="docMatTabla">
-
-<table class="table table-bordered table-responsive" id="tabla">
-  <thead>
-    <tr>
-      <th scope="col" colspan="18">Listado Docentes Asignados a la Materia {{materia}}</th>
-    </tr>
-  </thead>
-
-
-  {{#each doc_mat}}
-  <tr>
-
-    <td>
-
-      {{dni}} {{nombre}} {{apellido}}
-    </td>
-    <td>
-      {{estado}}
-    </td>
-    <td>
-      <a href="{{pathFor 'actualizar_est_doc'}}">actualizar</a>
-    </td>
-    </tr>
+  <form class="form" id="crearMateria">
+  <table class="table table-bordered  table-striped" id="tabla">
+    <thead>
+      <tr>
+        <th scope="col" colspan="4">Listado Docentes Asignados a la Materia {{materia}}</th>
+      </tr>
+      <tr>
+        <th scope="col-12" >DNI </th>
+        <th scope="col-12" >DOCENTE </th>
+        <th scope="col-12" colspan="2" >ESTADO </th>
+      </tr>
+    </thead>
+    {{#each doc_mat}}
+      <tr>
+        <td class="align-middle">
+          {{dni}}
+        </td>
+        <td class="align-middle">
+          {{nombre}} {{apellido}}
+        </td>
+        <td id={{id_relacion}} class="align-middle">
+          <span >{{estado}}</span>
+        </td>
+        <td class="align-middle">
+          <select value="" class="form-control" id={{id_relacion}}>
+            <option selected="selected" disabled value="">Estado</option>
+            <option value="activo">Activo</option>
+            <option value="licencia">Licencia</option>
+            <option value="renuncia">Renuncia</option>
+          </select>
+        </td>
+      </tr>
     {{/each}}
   </table>
+  </form>
 </template>

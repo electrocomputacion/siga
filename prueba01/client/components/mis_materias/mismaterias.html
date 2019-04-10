@@ -1,0 +1,12 @@
+<template name="misMaterias">
+  <body>
+    <div class="row">
+      <div class="col s-12">
+        <h2>Listado de Materias</h2>
+        {{#each materias}}
+        <a href="{{pathFor 'tablaAlumno' _id=id_materia}}">{{nombre}}</a>
+        {{/each}}
+      </div>
+    </div>
+  </body>
+</template>

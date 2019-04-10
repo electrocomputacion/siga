@@ -53,3 +53,8 @@ RelMatDocente.allow({
     return doc.owner===userId;
   }
 })
+RelMatDocente.allow({
+  update: function(userId, doc){
+    return doc.owner===userId;
+  }
+})
