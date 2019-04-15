@@ -52,12 +52,13 @@
             <a class="list-group-item list-group-item-action list-group-item-primary " href="{{ pathFor 'alumnoForm'}}">Cargar Alumno</a>
             <a class="list-group-item list-group-item-action list-group-item-primary " href="{{ pathFor 'tutor_form'}}">Nuevo Tutor</a>
             <a class="list-group-item list-group-item-action list-group-item-primary " href="{{ pathFor 'cursos_form'}}">Nuevo Curso</a>
+            <a class="list-group-item list-group-item-action list-group-item-primary " href="{{ pathFor 'AsignAlmCurso'}}">Armar cursos</a>
             <a class="list-group-item list-group-item-action list-group-item-primary " href="{{ pathFor 'materiaForm'}}">Nueva Materia</a>
             <a class="list-group-item list-group-item-action list-group-item-primary " href="{{ pathFor 'materiaDocente'}}">Asignar Materia</a>
-            <a class="list-group-item list-group-item-action list-group-item-primary " href="{{ pathFor 'tablaAlumno'}}">Planillas</a>
+            <a class="list-group-item list-group-item-action list-group-item-primary " href="{{ pathFor 'misMaterias'}}">Planillas</a>
           {{/if}}
           {{#if isInRole 'docente'}}
-            <a class="list-group-item list-group-item-action list-group-item-primary " href="{{ pathFor 'tablaAlumno'}}">Planillas</a>
+            <a class="list-group-item list-group-item-action list-group-item-primary " href="{{ pathFor 'misMaterias'}}">Planillas</a>
           {{/if}}
           {{#if isInRole 'secretario'}}
             <a class="list-group-item list-group-item-action list-group-item-primary " href="{{ pathFor 'alumnoForm'}}">Cargar Alumno</a>

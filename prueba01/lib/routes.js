@@ -150,6 +150,7 @@ Router.route('/tablaAlumno',{
 												function() { return Meteor.subscribe('relalumncurso'); },
 												function () { return Meteor.subscribe('notas');	},
 												function() { return Meteor.subscribe('curso'); },
+												function() { return Meteor.subscribe('materia'); },
 											]
 	},
 	action: function(){

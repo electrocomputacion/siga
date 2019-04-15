@@ -4,7 +4,7 @@
       <div class="col s-12">
         <h2>Listado de Materias</h2>
         {{#each materias}}
-        <a href="{{pathFor 'tablaAlumno' _id=id_materia}}">{{nombre}}</a>
+        <a href="{{pathFor 'tablaAlumno'}}" id={{id_materia}}>{{nombre}}</a>
         {{/each}}
       </div>
     </div>

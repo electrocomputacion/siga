@@ -104,11 +104,11 @@ Alumno.allow({
 })
 
 Meteor.methods({
-  'id_notas.update'(alumnoId,idNota){
-    check(alumnoId,String);
-    check(idNota,String);
-    Alumno.update({_id:alumnoId}, {$push:{
-      "id_notas":idNota,
+  'id_notas.update'(data){
+    check(data.idAlumno,String);
+    check(data.id_nota,String);
+    Alumno.update({_id:data.idAlumno}, {$push:{
+      "id_notas":data.id_nota,
     }
 
   });
