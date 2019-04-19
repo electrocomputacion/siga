@@ -4,7 +4,11 @@ import {Session} from 'meteor/session'
 import {Alumno} from '../../../lib/collections/alumno'
 import { Curso } from '../../../lib/collections/curso'
 import{ RelAlumnCurso } from '../../../lib/collections/relalumncurso'
-
+/*///////////////////////////////////////////////////////////////////////
+Se asignan los alumnos a los diferentes cursos creados, asi se pueden armar
+los cursos de manera personalizada, el proceso no es autonomo debido a los
+constantes cambios en los grupos de alumnos.
+*/
 Template.AsignAlmCurso.rendered = function() {
   let dni = Session.get("dni");
   if (dni) {
@@ -47,6 +51,11 @@ Template.AsignAlmCurso.events({
       newRelacion.id = idAlumno._id; //guardo el id del alumno a asignar
     //  console.log("objeto alumno", idAlumno);
     //  console.log("id del alumno", newRelacion.id);
+    let cuenta5 = RelAlumnCurso.find({
+      alumno:newRelacion.id,
+      curso:newRelacion.curso,
+    }).count();
+    if(cuenta5===0){
       RelAlumnCurso.insert({
         alumno: newRelacion.id,
         curso: newRelacion.curso,
@@ -54,6 +63,11 @@ Template.AsignAlmCurso.events({
       })
       alert("Se ha asignado el alumno");
       $('#AsignCurso')[0].reset();
+    }
+      else{
+        alert("El alumno ya existe en ese curso");
+        $('#AsignCurso')[0].reset();
+      }
     } //fin de la consulta del alumno
     else {
       alert("Debe inscribir al Alumno primero");

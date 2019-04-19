@@ -4,7 +4,7 @@ import regular from '@fortawesome/fontawesome-free-regular'
 import solid from '@fortawesome/fontawesome-free-solid'
 //import brands from '@fortawesome/fontawesome-free-brands'
 import { Moment } from 'meteor/momentjs:moment'
-
+import {Session} from 'meteor/session'
 //import * as moment from 'moment';
 
 Template.baseLayout.events({
@@ -17,6 +17,14 @@ Template.baseLayout.events({
       //console.log("Antes de jquery");
       $("#wrapper").toggleClass("toggled");
       //console.log("despues de jquery");
+      Session.set("toggled",true);
+    },
+    'click': function(event){
+      var flag = Session.get("toggled");
+      if(flag){
+        $("#wrapper").toggleClass("toggled");
+        Session.set("toggled",false);
+      }
     }
 });
 

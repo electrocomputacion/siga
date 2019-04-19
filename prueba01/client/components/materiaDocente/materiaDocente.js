@@ -6,6 +6,18 @@ import {Materia} from '../../../lib/collections/materia'
 import { Curso } from '../../../lib/collections/curso'
 import{ RelMatDocente } from '../../../lib/collections/relmatdocente'
 
+/*/////////////////////////MateriaDocente/////////////////////////////////////
+Asignacion de materia a docentes, se controla la existencia de docentes
+asignados a las materias para la toma de desiciones y actualizacion de
+datos, no puede existir mas de un docente activo por materia.
+//////////////////////////////////////////////////////////////////////////////
+*/
+
+
+/*
+Depurado el problema de tomar los datos con typeahead, estaria funcionando
+correctamente
+*/
 
 
 Template.materiadocente.rendered = function() {
@@ -21,10 +33,14 @@ Template.materiadocente.helpers({
           "_id": it.id_curso
         });
         //console.log(curso)
-        var prueba = it.nombre + " " + "Curso:" + " " + curso.año + "°" + curso.division + "°" + " " + "Turno:" + " " + curso.turno + " " + "Ciclo:" + " " + curso.ciclo;
+        var prueba = {}
+        prueba.id = it._id;
+        prueba.name = it.nombre + ", " + "Curso:" + " " + curso.año + "°" + curso.division + "°" + " " + "Turno:" + " " + curso.turno + " " + "Ciclo:" + " " + curso.ciclo;
         return prueba;
+
         //return it.dni;
       });
+
   },
   docente() { //contiene todas las materias
     return Meteor.users.find().fetch().map(
@@ -44,6 +60,7 @@ Template.materiadocente.events({
     event.preventDefault();
     const target = event.target;
     var dato_materia = target.id_materia.value;
+    //console.log("A ver q sale: ", dato_materia);
     var dato_docente = target.id_docente.value;
     var fecha_inicio = target.fecha_inicio.value;
     var revista = target.revista.value;
@@ -51,16 +68,19 @@ Template.materiadocente.events({
     //console.log("Datos",dato_materia);
     //console.log("target",target);
     var prueba = dato_materia;
-    var dato_materia = dato_materia.split(" ");
+    var dato_materia = dato_materia.split(", ");
+    var nombre_materia = dato_materia[0];
+    //console.log("nombre materia", nombre_materia)
+    dato_materia = dato_materia[1].split(" ");
     var dato_docente = dato_docente.split(" ");
     let dni_docente = dato_docente[0]; //sirve para buscar el id del docente
-    //  console.log("Datos", dato_materia);
-    let num = dato_materia[2].split("°");
-    console.log("num", num);
+    //  console.log("Datos materia", dato_materia);
+    let num = dato_materia[1].split("°");
+    //console.log("num", num);
     var curso = {};
     //curso.nombre=dato_materia[0];
-    curso.turno = dato_materia[4];
-    curso.ciclo = dato_materia[6];
+    curso.turno = dato_materia[3];
+    curso.ciclo = dato_materia[5];
     curso.año = parseInt(num[0], 10);
     curso.division = parseInt(num[1], 10);
     //console.log("Datos para consulta", curso);
@@ -72,7 +92,7 @@ Template.materiadocente.events({
     });
     let materia = Materia.findOne({ //busco la materia en cuestion y la guardo
       "id_curso": datos_curso._id,
-      "nombre": dato_materia[0],
+      "nombre": nombre_materia,
     });
     let docente = Meteor.users.findOne({
       "profile.dni": dni_docente,
@@ -87,10 +107,10 @@ Template.materiadocente.events({
       "id_materia": materia._id,
       "estado": "activo",
     }).count();
-    console.log("Materia", materia._id);
+    /*console.log("Materia", materia._id);
     console.log("Docente", docente._id);
     console.log("Cuenta", cuenta);
-    console.log("Relacion2", relacion2)
+    console.log("Relacion2", relacion2)*/
     //console.log("Relacion 2", relacion2);
     if (cuenta <= 0) {                //controlo que no haya docentes asignados
       let lar=relacion2;
@@ -107,7 +127,7 @@ Template.materiadocente.events({
 
       } else {
         if (confirm("Asignar a" + " " + docente.profile.surname + " " + docente.profile.name + " a la materia" + " " + prueba)) {
-          console.log("confirmado");
+          //console.log("confirmado");
           let id_relacion = RelMatDocente.insert({
             "id_materia": materia._id,
             "id_docente": docente._id,
@@ -121,7 +141,7 @@ Template.materiadocente.events({
     } //fin del if cuenta
     else {
       if (confirm("El docente ya se encuentra asigando como activo en la materia")) {
-        console.log("confirmado");
+        //console.log("confirmado");
       }
     }
     //loggedInUser = Meteor.user();

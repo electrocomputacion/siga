@@ -7,9 +7,19 @@ import {Curso} from '../../../lib/collections/curso'
 import {RelAlumnCurso} from '../../../lib/collections/relalumncurso'
 import {Notas} from '../../../lib/collections/notas'
 import {Materia} from '../../../lib/collections/materia'
-///////////////////////////////7
 
-//////////////////////////////7
+/*///////////////////GERNERA LA PLANILLA DE NOTAS//////////////////
+Las notas son insertadas en la tabla y guardadas automaticamente
+con el cambio de foco en las celdas de la planilla, las notas insertadas
+no pueden ser modificadas.
+/////////////////////////////////////////////////////////////////////
+*/
+
+
+/*/////////////ESTADO DE DESARROLLO/////////////////
+Ya esta funcionando la planilla, no hace falta depurar.
+apto para primeras pruebas efectivas
+/////////////////////////////////////////////////*/
 Template.tablaAlumno.onCreated(function() {
   this.viejoId = new ReactiveVar(null);
   this.nuevoId = new ReactiveVar(null); //variable reactiva del ciclo
@@ -86,7 +96,7 @@ Template.tablaAlumno.events({
   'focus .form-control-plaintext': function(event) {
     event.preventDefault();
     var id1 = event.currentTarget.id;
-    console.log("ID actual",id1)
+    //console.log("ID actual",id1)
     var viejoId = Template.instance().nuevoId.get();
     Template.instance().viejoId.set(viejoId);
     var nuevoId = id1;
@@ -100,8 +110,8 @@ Template.tablaAlumno.events({
       //console.log("dni del alumno", dni_alumno);
       var selector = '#' + viejoId;
       var nota = $(selector).val();
-      console.log("el selector es:", selector);
-      console.log("La nota es:", nota);
+      //console.log("el selector es:", selector);
+      //console.log("La nota es:", nota);
       var materia = Template.instance().id_materia.get(); //id de la materia a la que corresponde la nota
       if (nota != 0) { //controlo que el input no este vacio
         alumno = Alumno.findOne({
