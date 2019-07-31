@@ -53,28 +53,44 @@
               <p id="{{trim1.[0].idTabla}}">{{trim1.[0].nota}}</p>
             </td>
           {{else}}
-            <td scope="col"><input type="text" class="form-control-plaintext" id="{{trim1.[0].idTabla}}"></td>
+                {{#if isInRole 'docente'}}
+                  <td scope="col"><input type="text" class="form-control-plaintext" id="{{trim1.[0].idTabla}}"></td>
+                  {{else}}
+                    <p></p>
+                    {{/if}}
           {{/if}}
           {{#if trim1.[1].nota}}
             <td scope="col">
               <p id="{{trim1.[1].idTabla}}">{{trim1.[1].nota}}</p>
             </td>
           {{else}}
+            {{#if isInRole 'docente'}}
             <td scope="col"><input type="text" class="form-control-plaintext" id="{{trim1.[1].idTabla}}"></td>
+            {{else}}
+            <p></p>
+            {{/if}}
           {{/if}}
           {{#if trim1.[2].nota}}
             <td scope="col">
               <p id="{{trim1.[2].idTabla}}">{{trim1.[2].nota}}</p>
             </td>
           {{else}}
+            {{#if isInRole 'docente'}}
             <td scope="col"><input type="text" class="form-control-plaintext" id="{{trim1.[2].idTabla}}"></td>
+            {{else}}
+            <p></p>
+            {{/if}}
           {{/if}}
           {{#if trim1.[3].nota}}
             <td scope="col">
               <p id="{{trim1.[3].idTabla}}">{{trim1.[3].nota}}</p>
             </td>
           {{else}}
+          {{#if isInRole 'docente'}}
             <td scope="col"><input type="text" class="form-control-plaintext" id="{{trim1.[3].idTabla}}"></td>
+            {{else}}
+            <p></p>
+            {{/if}}
           {{/if}}
           {{#if trim1.[4].prom1}}
             <td scope="col">
@@ -90,7 +106,11 @@
               <p id="{{trim2.[0].idTabla}}">{{trim2.[0].nota}}</p>
             </td>
           {{else}}
+            {{#if isInRole 'docente'}}
             <td scope="col"><input type="text" class="form-control-plaintext" id="{{trim2.[0].idTabla}}"></td>
+            {{else}}
+              <p></p>
+              {{/if}}
           {{/if}}
           {{#if trim2.[1].nota}}
             <td scope="col">

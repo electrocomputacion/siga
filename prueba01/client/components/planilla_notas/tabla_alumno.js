@@ -43,22 +43,23 @@ Template.tablaAlumno.helpers({
     var curso_alumno = RelAlumnCurso.find({
       curso: idCurso,
     }).fetch();
-    //console.log("curso_alumno",curso_alumno);
+    console.log("curso_alumno",curso_alumno);
     curso_alumno.forEach(function(d) {
       var alumno = Alumno.findOne({
         "_id": d.alumno
       });
+      console.log(alumno);
       var newAlumno = new Object();
       newAlumno.dni = alumno.dni;
       newAlumno.name = alumno.name;
       newAlumno.surname = alumno.surname;
       var notaslocas = notas(alumno);
-      //console.log("notas devueltas", notaslocas);
+      console.log("notas devueltas", notaslocas);
       newAlumno.trim1 = notaslocas.trim1;
       newAlumno.trim2 = notaslocas.trim2;
       newAlumno.trim3 = notaslocas.trim3;
       newAlumno.promFin = notaslocas.promFin;
-    //  console.log("Alumno",newAlumno);
+      console.log("Alumno",newAlumno);
       coleccion_alumno.push(newAlumno);
     })
     coleccion_alumno.sort(function(a, b) { //funcion que ordena los datos por apellido
@@ -96,7 +97,7 @@ Template.tablaAlumno.events({
   'focus .form-control-plaintext': function(event) {
     event.preventDefault();
     var id1 = event.currentTarget.id;
-    //console.log("ID actual",id1)
+    console.log("ID actual",id1)
     var viejoId = Template.instance().nuevoId.get();
     Template.instance().viejoId.set(viejoId);
     var nuevoId = id1;
@@ -110,8 +111,8 @@ Template.tablaAlumno.events({
       //console.log("dni del alumno", dni_alumno);
       var selector = '#' + viejoId;
       var nota = $(selector).val();
-      //console.log("el selector es:", selector);
-      //console.log("La nota es:", nota);
+      console.log("el selector es:", selector);
+      console.log("La nota es:", nota);
       var materia = Template.instance().id_materia.get(); //id de la materia a la que corresponde la nota
       if (nota != 0) { //controlo que el input no este vacio
         alumno = Alumno.findOne({
@@ -139,8 +140,8 @@ Template.tablaAlumno.events({
             //console.log("result",result); //en caso de error tengo que definir una funcion
           }
           if(result){
-            console.log("result",result);
-            console.log("Insertada la nota en alumno");
+            //console.log("result",result);
+            //console.log("Insertada la nota en alumno");
           }
         });
 ///////////////////////////////////////////
@@ -161,18 +162,18 @@ Devuelve los arrays de objetos trim1, trim2 y trim3
 function notas(datos) {
   var idNotas = [];
   let id_materia = Template.instance().id_materia.get();
-//  console.log("id_materia dentro de la funcion notas",id_materia);
+ //console.log("id_materia dentro de la funcion notas",id_materia);
   idNotas = datos.id_notas;
   let dni = datos.dni;
-//  console.log("Se llamo a la funcion para el DNI", dni);
-//  console.log("idnotas",idNotas);
+  //console.log("Se llamo a la funcion para el DNI", dni);
+  //console.log("idnotas",idNotas);
   let trim1 = [];
   let trim2 = [];
   let trim3 = [];
   let control=0;
-//  console.log("solo probando");
+  //console.log("solo probando");
   if(idNotas==undefined){
-//    console.log("dentro if undefined")
+   //console.log("dentro if undefined")
     control=0;
   }
   else{

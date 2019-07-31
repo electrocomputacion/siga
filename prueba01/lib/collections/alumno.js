@@ -114,8 +114,8 @@ Meteor.methods({
   });
 return;
   }
-
 })
+
 Meteor.methods({
   'alumno.remove'(alumnoId){
     check(alumnoId, String );
