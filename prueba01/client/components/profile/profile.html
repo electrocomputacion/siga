@@ -9,13 +9,15 @@
           <span class="card-title">Id: {{user.id}}</span>
           <hr />
 
-          <span class="card-title">Email: {{user.email}}</span>
+          <span class="card-title">Email: {{currentUser.emails.[0].address}}</span>
           <hr />
-          <span class="card-title">Nombre: {{user.profile.name}}</span>
+          <span class="card-title">Nombre: {{currentUser.profile.name}}</span>
           <hr />
-          <span class="card-title">Apellido: {{user.profile.surname}}</span>
+          <span class="card-title">Apellido: {{currentUser.profile.surname}}</span>
           <hr />
-          <span class="card-title">Dirección: {{user.profile.address}}</span>
+          <span class="card-title">Dirección: {{currentUser.profile.address}}</span>
+          <hr />
+          <span class="card-title">Roles:{{currentUser.profile.roles}}</span>
         </div>
       </div>
 

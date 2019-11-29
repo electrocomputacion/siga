@@ -20,7 +20,7 @@
       <i class="navbar-brand"></i>
       <i class="navbar-brand">
         <img src="/images/logo4.png" width="36" height="36" alt=""></i>
-      <i class="navbar-brand">S.I.G.A</i>
+      <i class="navbar-brand">S.I.G.E</i>
       <ul class="navbar-nav">
 
       </ul>
@@ -45,7 +45,7 @@
 
       <!-- Sidebar -->
       <div class="border-right" id="sidebar-wrapper">
-        <div class="sidebar-heading text-center font-weight-bold font-italic" style="background-color: #848484;">MENU </div>
+        <div class="sidebar-heading text-center font-weight-bold font-italic" style="background-color: #848484;">MENU {{user.roles[1]}}</div>
         <div class="list-group ">
           {{#if isInRole 'admin'}}
           <a class="list-group-item list-group-item-action list-group-item-primary " href="{{ pathFor 'crearUser'}}">Nuevo Usuario</a>

@@ -43,23 +43,23 @@ Template.tablaAlumno.helpers({
     var curso_alumno = RelAlumnCurso.find({
       curso: idCurso,
     }).fetch();
-    console.log("curso_alumno",curso_alumno);
+    //console.log("curso_alumno",curso_alumno);
     curso_alumno.forEach(function(d) {
       var alumno = Alumno.findOne({
         "_id": d.alumno
       });
-      console.log(alumno);
+      //console.log(alumno);
       var newAlumno = new Object();
       newAlumno.dni = alumno.dni;
       newAlumno.name = alumno.name;
       newAlumno.surname = alumno.surname;
       var notaslocas = notas(alumno);
-      console.log("notas devueltas", notaslocas);
+      //console.log("notas devueltas", notaslocas);
       newAlumno.trim1 = notaslocas.trim1;
       newAlumno.trim2 = notaslocas.trim2;
       newAlumno.trim3 = notaslocas.trim3;
       newAlumno.promFin = notaslocas.promFin;
-      console.log("Alumno",newAlumno);
+    //  console.log("Alumno",newAlumno);
       coleccion_alumno.push(newAlumno);
     })
     coleccion_alumno.sort(function(a, b) { //funcion que ordena los datos por apellido
@@ -73,6 +73,7 @@ Template.tablaAlumno.helpers({
       return 0;
     });
   //  console.log("alumnos", coleccion_alumno);
+  console.log("Datos a la Vista",coleccion_alumno);
     return coleccion_alumno;
   },
   materia: function(){

@@ -1,197 +1,190 @@
 <template name="tablaAlumno">
-  <!--{{#if alumnos}}-->
-    <table class="table table-bordered table-responsive" id="tabla">
-      <thead>
-        <tr>
-          <th scope="col" colspan="18">Curso: {{materia.curso}}</th>
-        </tr>
-      </thead>
-      <thead>
-        <tr>
-          <th scope="col-12" colspan="2">Materia: {{materia.nombre}} </th>
-          <th scope="col-12" colspan="5">1 Trimestre </th>
-          <th scope="col-12" colspan="5">2 Trimestre </th>
-          <th scope="col-12" colspan="5">3 Trimestre </th>
-        </tr>
-      </thead>
-      <thead>
-        <tr>
-          <th scope="col">Documento</th>
-          <th nowrap scope="col">Apellido y Nombre</th>
-          <th scope="col">N1</th>
-          <th scope="col">N2</th>
-          <th scope="col">N3</th>
-          <th scope="col">N4</th>
-          <th scope="col">Prom</th>
-          <th scope="col">N1</th>
-          <th scope="col">N2</th>
-          <th scope="col">N3</th>
-          <th scope="col">N4</th>
-          <th scope="col">Prom</th>
-          <th scope="col">N1</th>
-          <th scope="col">N2</th>
-          <th scope="col">N3</th>
-          <th scope="col">N4</th>
-          <th scope="col">Prom</th>
-          <th scope="col">P.Final</th>
-        </tr>
-      </thead>
-      {{#each alumnos}}
-        <tr>
-          <td id="prueba">
-            {{dni}}
+  <table class="table table-bordered table-responsive" id="tabla">
+    <thead>
+      <tr>
+        <th scope="col" colspan="18">Curso: {{materia.curso}}</th>
+      </tr>
+    </thead>
+    <thead>
+      <tr>
+        <th scope="col-12" colspan="2">Materia: {{materia.nombre}} </th>
+        <th scope="col-12" colspan="5">1 Trimestre </th>
+        <th scope="col-12" colspan="5">2 Trimestre </th>
+        <th scope="col-12" colspan="5">3 Trimestre </th>
+      </tr>
+    </thead>
+    <thead>
+      <tr>
+        <th scope="col">Documento</th>
+        <th nowrap scope="col">Apellido y Nombre</th>
+        <th scope="col">N1</th>
+        <th scope="col">N2</th>
+        <th scope="col">N3</th>
+        <th scope="col">N4</th>
+        <th scope="col">Prom</th>
+        <th scope="col">N1</th>
+        <th scope="col">N2</th>
+        <th scope="col">N3</th>
+        <th scope="col">N4</th>
+        <th scope="col">Prom</th>
+        <th scope="col">N1</th>
+        <th scope="col">N2</th>
+        <th scope="col">N3</th>
+        <th scope="col">N4</th>
+        <th scope="col">Prom</th>
+        <th scope="col">P.Final</th>
+      </tr>
+    </thead>
+    {{#each alumnos}}
+      <tr>
+        <td id="prueba">
+          {{dni}}
+        </td>
+        <td Style="font-size:80%" id='td'>
+          {{surname}}, {{name}}
+        </td>
+        {{#if trim1.[0].nota}}
+          <td scope="col">
+            <p id="{{trim1.[0].idTabla}}">{{trim1.[0].nota}}</p>
           </td>
-          <td Style="font-size:80%" id='td'>
-            {{surname}}, {{name}}
-          </td>
-          <!--    <td scope="col"><input type="text" class="form-control-plaintext" id="t1sn1s{{dni}}"></td>
-      <td scope="col"><input type="text" class="form-control-plaintext" id="t1sn2s{{dni}}"></td>
-      <td scope="col"><input type="text" class="form-control-plaintext" id="t1sn3s{{dni}}"></td>
-      <td scope="col"><input type="text" class="form-control-plaintext" id="t1sn4s{{dni}}"></td>-->
-          {{#if trim1.[0].nota}}
-            <td scope="col">
-              <p id="{{trim1.[0].idTabla}}">{{trim1.[0].nota}}</p>
-            </td>
+        {{else}}
+          {{#if isInRole 'docente'}}
+            <td scope="col"><input type="text" class="form-control-plaintext" id="{{trim1.[0].idTabla}}"></td>
           {{else}}
-                {{#if isInRole 'docente'}}
-                  <td scope="col"><input type="text" class="form-control-plaintext" id="{{trim1.[0].idTabla}}"></td>
-                  {{else}}
-                    <p></p>
-                    {{/if}}
+            <p></p>
           {{/if}}
-          {{#if trim1.[1].nota}}
-            <td scope="col">
-              <p id="{{trim1.[1].idTabla}}">{{trim1.[1].nota}}</p>
-            </td>
-          {{else}}
-            {{#if isInRole 'docente'}}
+        {{/if}}
+        {{#if trim1.[1].nota}}
+          <td scope="col">
+            <p id="{{trim1.[1].idTabla}}">{{trim1.[1].nota}}</p>
+          </td>
+        {{else}}
+          {{#if isInRole 'docente'}}
             <td scope="col"><input type="text" class="form-control-plaintext" id="{{trim1.[1].idTabla}}"></td>
-            {{else}}
-            <p></p>
-            {{/if}}
-          {{/if}}
-          {{#if trim1.[2].nota}}
-            <td scope="col">
-              <p id="{{trim1.[2].idTabla}}">{{trim1.[2].nota}}</p>
-            </td>
           {{else}}
-            {{#if isInRole 'docente'}}
+            <p></p>
+          {{/if}}
+        {{/if}}
+        {{#if trim1.[2].nota}}
+          <td scope="col">
+            <p id="{{trim1.[2].idTabla}}">{{trim1.[2].nota}}</p>
+          </td>
+        {{else}}
+          {{#if isInRole 'docente'}}
             <td scope="col"><input type="text" class="form-control-plaintext" id="{{trim1.[2].idTabla}}"></td>
-            {{else}}
-            <p></p>
-            {{/if}}
-          {{/if}}
-          {{#if trim1.[3].nota}}
-            <td scope="col">
-              <p id="{{trim1.[3].idTabla}}">{{trim1.[3].nota}}</p>
-            </td>
           {{else}}
+            <p></p>
+          {{/if}}
+        {{/if}}
+        {{#if trim1.[3].nota}}
+          <td scope="col">
+            <p id="{{trim1.[3].idTabla}}">{{trim1.[3].nota}}</p>
+          </td>
+        {{else}}
           {{#if isInRole 'docente'}}
             <td scope="col"><input type="text" class="form-control-plaintext" id="{{trim1.[3].idTabla}}"></td>
-            {{else}}
+          {{else}}
             <p></p>
-            {{/if}}
           {{/if}}
-          {{#if trim1.[4].prom1}}
-            <td scope="col">
-              <p id="prom1"><b>{{trim1.[4].prom1}}</b></p>
-            </td>
-          {{else}}
-            <td scope="col">
-              <p id="trim1"></p>
-            </td>
-          {{/if}}
-          {{#if trim2.[0].nota}}
-            <td scope="col">
-              <p id="{{trim2.[0].idTabla}}">{{trim2.[0].nota}}</p>
-            </td>
-          {{else}}
-            {{#if isInRole 'docente'}}
+        {{/if}}
+        {{#if trim1.[4].prom1}}
+          <td scope="col">
+            <p id="prom1"><b>{{trim1.[4].prom1}}</b></p>
+          </td>
+        {{else}}
+          <td scope="col">
+            <p id="trim1"></p>
+          </td>
+        {{/if}}
+        {{#if trim2.[0].nota}}
+          <td scope="col">
+            <p id="{{trim2.[0].idTabla}}">{{trim2.[0].nota}}</p>
+          </td>
+        {{else}}
+          {{#if isInRole 'docente'}}
             <td scope="col"><input type="text" class="form-control-plaintext" id="{{trim2.[0].idTabla}}"></td>
-            {{else}}
-              <p></p>
-              {{/if}}
-          {{/if}}
-          {{#if trim2.[1].nota}}
-            <td scope="col">
-              <p id="{{trim2.[1].idTabla}}">{{trim2.[1].nota}}</p>
-            </td>
           {{else}}
-            <td scope="col"><input type="text" class="form-control-plaintext" id="{{trim2.[1].idTabla}}"></td>
+            <p></p>
           {{/if}}
-          {{#if trim2.[2].nota}}
-            <td scope="col">
-              <p id="{{trim2.[2].idTabla}}">{{trim2.[2].nota}}</p>
-            </td>
-          {{else}}
-            <td scope="col"><input type="text" class="form-control-plaintext" id="{{trim2.[2].idTabla}}"></td>
-          {{/if}}
-          {{#if trim2.[3].nota}}
-            <td scope="col">
-              <p id="{{trim2.[3].idTabla}}">{{trim2.[3].nota}}</p>
-            </td>
-          {{else}}
-            <td scope="col"><input type="text" class="form-control-plaintext" id="{{trim2.[3].idTabla}}"></td>
-          {{/if}}
-          {{#if trim2.[4].prom2}}
-            <td scope="col">
-              <p id="prom1"><b>{{trim2.[4].prom2}}</b></p>
-            </td>
-          {{else}}
-            <td scope="col">
-              <p id="trim2"></p>
-            </td>
-          {{/if}}
+        {{/if}}
+        {{#if trim2.[1].nota}}
+          <td scope="col">
+            <p id="{{trim2.[1].idTabla}}">{{trim2.[1].nota}}</p>
+          </td>
+        {{else}}
+          <td scope="col"><input type="text" class="form-control-plaintext" id="{{trim2.[1].idTabla}}"></td>
+        {{/if}}
+        {{#if trim2.[2].nota}}
+          <td scope="col">
+            <p id="{{trim2.[2].idTabla}}">{{trim2.[2].nota}}</p>
+          </td>
+        {{else}}
+          <td scope="col"><input type="text" class="form-control-plaintext" id="{{trim2.[2].idTabla}}"></td>
+        {{/if}}
+        {{#if trim2.[3].nota}}
+          <td scope="col">
+            <p id="{{trim2.[3].idTabla}}">{{trim2.[3].nota}}</p>
+          </td>
+        {{else}}
+          <td scope="col"><input type="text" class="form-control-plaintext" id="{{trim2.[3].idTabla}}"></td>
+        {{/if}}
+        {{#if trim2.[4].prom2}}
+          <td scope="col">
+            <p id="prom1"><b>{{trim2.[4].prom2}}</b></p>
+          </td>
+        {{else}}
+          <td scope="col">
+            <p id="trim2"></p>
+          </td>
+        {{/if}}
 
-          {{#if trim3.[0].nota}}
-            <td scope="col">
-              <p id="{{trim3.[0].idTabla}}">{{trim3.[0].nota}}</p>
-            </td>
-          {{else}}
-            <td scope="col"><input type="text" class="form-control-plaintext" id="{{trim3.[0].idTabla}}"></td>
-          {{/if}}
-          {{#if trim3.[1].nota}}
-            <td scope="col">
-              <p id="{{trim3.[1].idTabla}}">{{trim3.[1].nota}}</p>
-            </td>
-          {{else}}
-            <td scope="col"><input type="text" class="form-control-plaintext" id="{{trim3.[1].idTabla}}"></td>
-          {{/if}}
-          {{#if trim3.[2].nota}}
-            <td scope="col">
-              <p id="{{trim3.[2].idTabla}}">{{trim3.[2].nota}}</p>
-            </td>
-          {{else}}
-            <td scope="col"><input type="text" class="form-control-plaintext" id="{{trim3.[2].idTabla}}"></td>
-          {{/if}}
-          {{#if trim3.[3].nota}}
-            <td scope="col">
-              <p id="{{trim3.[3].idTabla}}">{{trim3.[3].nota}}</p>
-            </td>
-          {{else}}
-            <td scope="col"><input type="text" class="form-control-plaintext" id="{{trim3.[3].idTabla}}"></td>
-          {{/if}}
-          {{#if trim3.[4].prom3}}
-            <td scope="col">
-              <p id="prom3"><b>{{trim3.[4].prom3}}</b></p>
-            </td>
-          {{else}}
-            <td scope="col">
-              <p id="trim3"></p>
-            </td>
-          {{/if}}
-          {{#if promFin}}
-            <td scope="col">
-              <p id="promFin"><b>{{promFin}}</b></p>
-            </td>
-          {{else}}
-            <td scope="col">
-              <p id="promFin"></p>
-            </td>
-          {{/if}}
+        {{#if trim3.[0].nota}}
+          <td scope="col">
+            <p id="{{trim3.[0].idTabla}}">{{trim3.[0].nota}}</p>
+          </td>
+        {{else}}
+          <td scope="col"><input type="text" class="form-control-plaintext" id="{{trim3.[0].idTabla}}"></td>
+        {{/if}}
+        {{#if trim3.[1].nota}}
+          <td scope="col">
+            <p id="{{trim3.[1].idTabla}}">{{trim3.[1].nota}}</p>
+          </td>
+        {{else}}
+          <td scope="col"><input type="text" class="form-control-plaintext" id="{{trim3.[1].idTabla}}"></td>
+        {{/if}}
+        {{#if trim3.[2].nota}}
+          <td scope="col">
+            <p id="{{trim3.[2].idTabla}}">{{trim3.[2].nota}}</p>
+          </td>
+        {{else}}
+          <td scope="col"><input type="text" class="form-control-plaintext" id="{{trim3.[2].idTabla}}"></td>
+        {{/if}}
+        {{#if trim3.[3].nota}}
+          <td scope="col">
+            <p id="{{trim3.[3].idTabla}}">{{trim3.[3].nota}}</p>
+          </td>
+        {{else}}
+          <td scope="col"><input type="text" class="form-control-plaintext" id="{{trim3.[3].idTabla}}"></td>
+        {{/if}}
+        {{#if trim3.[4].prom3}}
+          <td scope="col">
+            <p id="prom3"><b>{{trim3.[4].prom3}}</b></p>
+          </td>
+        {{else}}
+          <td scope="col">
+            <p id="trim3"></p>
+          </td>
+        {{/if}}
+        {{#if promFin}}
+          <td scope="col">
+            <p id="promFin"><b>{{promFin}}</b></p>
+          </td>
+        {{else}}
+          <td scope="col">
+            <p id="promFin"></p>
+          </td>
+        {{/if}}
       </tr>
-      {{/each}}
-</table>
-
-<!--{{/if}}-->
+    {{/each}}
+  </table>
 </template>
